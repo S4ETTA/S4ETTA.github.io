@@ -1,0 +1,126 @@
+/* --- SAETTA MASTER STYLESHEET V5.0 (Grid Restore & Compact Mode) --- */
+:root {
+    --bg-color: #E5D3A5; 
+    --ink-color: #1A1A1A; 
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--ink-color);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0; 
+    background-image: linear-gradient(var(--ink-color) 0.5px, transparent 0.5px), linear-gradient(90deg, var(--ink-color) 0.5px, transparent 0.5px);
+    background-size: 100px 100px;
+}
+body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); opacity: 0.94; z-index: -1; }
+a { color: var(--ink-color); text-decoration: none; transition: 0.2s; }
+
+/* --- FULL WIDTH NAV BAR --- */
+.top-bar {
+    background-color: var(--ink-color);
+    color: var(--bg-color);
+    width: 100%;
+    padding: 25px 20px; 
+    box-sizing: border-box; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    border-bottom: 4px solid #000;
+}
+
+.logo-img, .social-icon { filter: invert(1) sepia(1) saturate(500%) hue-rotate(300deg) brightness(0.9) contrast(0.9); }
+.logo-img { width: 80px; height: auto; margin-right: 20px; }
+
+.identity-block { display: flex; align-items: center; }
+.identity h1 { margin: 0; font-size: 2.2rem; text-transform: uppercase; letter-spacing: -1px; line-height: 1; font-weight: 900; color: var(--bg-color); }
+.identity .saetta-title { font-size: 0.9rem; margin-top: 5px; font-weight: 700; letter-spacing: 2px; opacity: 0.8; color: var(--bg-color); }
+
+.nav-group { display: flex; align-items: center; gap: 40px; }
+nav { display: flex; gap: 30px; }
+nav a { font-weight: 700; font-size: 1.1rem; text-transform: uppercase; color: var(--bg-color); opacity: 0.6; padding-bottom: 5px; border-bottom: 3px solid transparent; }
+nav a:hover, nav a.active { opacity: 1; color: var(--bg-color); border-bottom: 3px solid var(--bg-color); }
+
+.socials { display: flex; gap: 15px; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 20px; margin-left: 10px; }
+.social-icon { width: 24px; height: 24px; opacity: 0.7; transition: 0.2s; }
+.social-icon:hover { opacity: 1; transform: scale(1.1); }
+
+
+/* --- THE FIX: CENTERING WITHOUT BREAKING GRID --- */
+/* We removed "display: block" so grids can work again */
+body > *:not(#saetta-nav):not(script) {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-sizing: border-box; /* Prevents padding from breaking width */
+}
+
+h2 { font-size: 1.1rem; border-left: 5px solid var(--ink-color); padding-left: 15px; text-transform: uppercase; margin-top: 10px; margin-bottom: 30px; font-weight: 800; letter-spacing: -0.5px; }
+
+
+/* --- GRID LAYOUTS (Restored) --- */
+
+/* BIO PAGE: Photo Left, Text Right */
+/* Specificity Fix: We force this to be 'grid' */
+.grid-2 { 
+    display: grid !important; 
+    grid-template-columns: 250px 1fr; /* Fixed photo width 250px */
+    gap: 50px; 
+    align-items: start; 
+}
+
+/* SYSTEMS/REPORTS/VIDEOS: Compact Modules */
+.grid-3 { 
+    display: grid !important; 
+    
+    /* SMALLER CARDS: Min 240px, Max 300px */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 300px)); 
+    
+    gap: 30px; 
+    /* If there are few items, keep them to the left (standard) or center them */
+    /* Use 'start' to stack them left-to-right like text */
+    justify-content: start; 
+}
+
+
+/* --- MODULE STYLING (Compact) --- */
+.module, .system-card { 
+    border: 1px solid var(--ink-color); 
+    background: rgba(255,255,255,0.05); 
+    transition: 0.2s; 
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; 
+}
+.module:hover, .system-card:hover { transform: translateY(-3px); box-shadow: 4px 4px 0px var(--ink-color); }
+
+/* Smaller Thumbnails */
+.sys-thumb { 
+    width: 100%; 
+    height: 130px; /* Reduced height */
+    background: #d4c495; 
+    border-bottom: 1px solid var(--ink-color); 
+    display: flex; align-items: center; justify-content: center; 
+    font-weight: bold; font-size: 0.75rem; color: rgba(0,0,0,0.5); 
+}
+
+.sys-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; } /* Less padding */
+.sys-title { font-size: 1rem; font-weight: 800; margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: -0.5px; } /* Smaller Title */
+.sys-desc { font-size: 0.85rem; margin-bottom: 15px; flex-grow: 1; line-height: 1.4; color: #333; } /* Smaller Text */
+
+.btn, .sys-link { align-self: flex-start; font-weight: 800; border: 1px solid var(--ink-color); padding: 6px 10px; font-size: 0.7rem; letter-spacing: 0.5px; margin-top: auto; }
+.btn:hover, .sys-link:hover { background: var(--ink-color); color: var(--bg-color); }
+
+
+/* Video Container Fix */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #000;
+    border-bottom: 1px solid var(--ink-color);
+}
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
