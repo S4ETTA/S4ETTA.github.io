@@ -1,19 +1,17 @@
-/* --- CONTENT LOADER ENGINE --- */
+/* --- SAETTA CONTENT LOADER V3.0 --- */
 
-// Function to generate HTML for a SYSTEM card
-function loadSystems() {
-    const container = document.getElementById('system-grid');
-    if (!container) return; // Stop if we aren't on the systems page
-
+function loadTools() {
+    const container = document.getElementById('tool-grid');
+    if (!container) return;
     let html = '';
-    db.systems.forEach(item => {
+    db.tools.forEach(item => {
         html += `
             <div class="system-card">
                 <div class="sys-thumb">${item.thumb}</div>
                 <div class="sys-content">
                     <h3 class="sys-title">${item.title}</h3>
                     <p class="sys-desc">${item.desc}</p>
-                    <a href="${item.link}" class="sys-link">ACCESS >></a>
+                    <a href="${item.link}" class="btn">ACCESS >></a>
                 </div>
             </div>
         `;
@@ -21,15 +19,13 @@ function loadSystems() {
     container.innerHTML = html;
 }
 
-// Function to generate HTML for a REPORT card
-function loadReports() {
-    const container = document.getElementById('report-grid');
+function loadPapers() {
+    const container = document.getElementById('paper-grid');
     if (!container) return;
-
     let html = '';
-    db.reports.forEach(item => {
+    db.papers.forEach(item => {
         html += `
-            <div class="module">
+            <div class="report-card">
                 <div class="sys-content">
                     <div style="font-size:0.7rem; color:#666; margin-bottom:5px;">ID: ${item.id}</div>
                     <h3 class="sys-title">${item.title}</h3>
@@ -42,11 +38,9 @@ function loadReports() {
     container.innerHTML = html;
 }
 
-// Function to generate HTML for a VIDEO card
 function loadVideos() {
     const container = document.getElementById('video-grid');
     if (!container) return;
-
     let html = '';
     db.videos.forEach(item => {
         html += `
@@ -64,9 +58,8 @@ function loadVideos() {
     container.innerHTML = html;
 }
 
-// EXECUTE ON LOAD
 document.addEventListener('DOMContentLoaded', () => {
-    loadSystems();
-    loadReports();
+    loadTools();
+    loadPapers();
     loadVideos();
 });
