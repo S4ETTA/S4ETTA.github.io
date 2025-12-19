@@ -5,22 +5,22 @@ const db = {
     // 1. SYSTEMS DATA
     systems: [
         {
-            title: "CIRAM Project",
-            desc: "Context-based Information Recollection Model. An architecture for regenerating lecture scripts.",
-            thumb: "[ IMAGE: CIRAM ]", // You can use "images/ciram.jpg" here later
-            link: "sys-ciram.html",
+            title: "PHOBOS",
+            desc: "Ontology-based Global Early Warning and Threat Assessment Platform.",
+            thumb: "[ IMAGE: PHOBOS ]", // You can use "images/phobos.jpg" here later
+            link: "sys-phobos.html",
             status: "ACTIVE" // Optional tag
         },
         {
-            title: "SAETTA Toolkit",
-            desc: "Structured OSINT methodology and collection framework for regional analysis.",
-            thumb: "[ IMAGE: OSINT ]",
+            title: "WARNINGSTAR",
+            desc: "Discord-bound Data Aggregator with Flexible Sources and Keyword Triggers",
+            thumb: "[ IMAGE: WARNINGSTAR ]",
             link: "https://github.com/yourusername/toolkit",
-            status: "PUBLIC"
+            status: "ACTIVE"
         },
         {
-            title: "S8 Deimos",
-            desc: "Nonconformal target designation and tracker system.",
+            title: "DEIMOS (In development)",
+            desc: "Adaptive Open-Source Investigation Platform.",
             thumb: "[ IMAGE: DEIMOS ]",
             link: "#",
             status: "DEV"

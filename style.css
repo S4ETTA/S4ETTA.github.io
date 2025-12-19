@@ -56,6 +56,8 @@ body > *:not(#saetta-nav):not(script) {
     padding-left: 40px;
     padding-right: 40px;
     box-sizing: border-box; /* Prevents padding from breaking width */
+
+    margin-bottom: 60px;
 }
 
 h2 { font-size: 1.1rem; border-left: 5px solid var(--ink-color); padding-left: 15px; text-transform: uppercase; margin-top: 10px; margin-bottom: 30px; font-weight: 800; letter-spacing: -0.5px; }
@@ -67,8 +69,8 @@ h2 { font-size: 1.1rem; border-left: 5px solid var(--ink-color); padding-left: 1
 /* Specificity Fix: We force this to be 'grid' */
 .grid-2 { 
     display: grid !important; 
-    grid-template-columns: 250px 1fr; /* Fixed photo width 250px */
-    gap: 50px; 
+    grid-template-columns: 220px 1fr; /* Fixed photo width 250px */
+    gap: 80px; 
     align-items: start; 
 }
 
@@ -88,14 +90,14 @@ h2 { font-size: 1.1rem; border-left: 5px solid var(--ink-color); padding-left: 1
 
 /* --- MODULE STYLING (Compact) --- */
 .module, .system-card { 
-    border: 1px solid var(--ink-color); 
+    border: 2px solid var(--ink-color); 
     background: rgba(255,255,255,0.05); 
     transition: 0.2s; 
     display: flex; 
     flex-direction: column; 
     height: 100%; 
 }
-.module:hover, .system-card:hover { transform: translateY(-3px); box-shadow: 4px 4px 0px var(--ink-color); }
+.module:hover, .system-card:hover { transform: translateY(-4px); box-shadow: 6px 6px 0px var(--ink-color); }
 
 /* Smaller Thumbnails */
 .sys-thumb { 

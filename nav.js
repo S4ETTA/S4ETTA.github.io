@@ -1,4 +1,4 @@
-// SAETTA NAVIGATION COMPONENT V2.0 (Socials Integrated)
+/* --- SAETTA NAVIGATION COMPONENT V3.0 (Final Deployment) --- */
 const navHTML = `
     <div class="top-bar">
         <div class="identity-block">
@@ -18,11 +18,14 @@ const navHTML = `
             </nav>
             
             <div class="socials">
-                <a href="https://x.com/yourhandle" target="_blank">
+                <a href="https://x.com/yourhandle" target="_blank" title="X / Twitter">
                     <img src="x.png" class="social-icon" alt="X">
                 </a>
-                <a href="https://youtube.com/yourchannel" target="_blank">
+                <a href="https://youtube.com/@yourchannel" target="_blank" title="YouTube Archive">
                     <img src="yt.png" class="social-icon" alt="YT">
+                </a>
+                <a href="mailto:saetta.mkim@gmail.com" title="Direct Contact">
+                    <img src="email.png" class="social-icon" alt="Email">
                 </a>
             </div>
         </div>
@@ -31,11 +34,11 @@ const navHTML = `
 
 document.getElementById("saetta-nav").innerHTML = navHTML;
 
-// Highlight Active Link
-const currentPath = window.location.pathname;
+// Active Link Highlighter
+const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 const navLinks = document.querySelectorAll('nav a');
 navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPath.split('/').pop()) {
+    if (link.getAttribute('href') === currentPath) {
         link.classList.add('active');
     }
 });
