@@ -1,46 +1,16 @@
-/* --- SAETTA CENTRAL DATABASE V5.0 --- */
+/* db.js */
 const db = {
-    // 1. TOOLS DATA
-    tools: [
-        { 
-            title: "WARNINGSTAR", 
-            desc: "Discord-bound Data Aggregator with Flexible Sources and Keyword Triggers.", 
-            thumb: "[ WARNINGSTAR_UI ]", 
-            link: "tool-warningstar.html" 
-        },
-        { 
-            title: "PHOBOS", 
-            desc: "Ontology-based Global Early Warning and Threat Assessment Platform.", 
-            thumb: "[ PHOBOS_v1 ]", 
-            link: "tool-phobos.html" 
-        },
-        { 
-            title: "DEIMOS", 
-            desc: "Nonconformal target designation and tracker for investigation and response.", 
-            thumb: "[ DEIMOS_DEV ]", 
-            link: "#" 
-        }
+    systems: [
+        { title: "PHOBOS", desc: "Ontology-based Global Early Warning and Threat Assessment Platform.", thumb: "[ PHOBOS_v1 ]", link: "sys-phobos.html" },
+        { title: "WARNINGSTAR", desc: "Discord-bound Data Aggregator with Flexible Sources and Keyword Triggers.", thumb: "[ WARNINGSTAR ]", link: "tool-warningstar.html" },
+        { title: "DEIMOS", desc: "Adaptive Open-Source Investigation Platform and tracker.", thumb: "[ DEIMOS_DEV ]", link: "#" }
     ],
-
-    // 2. PAPERS DATA
-    papers: [
-        { 
-            title: "Protocol 5A Analysis", 
-            desc: "Security protocols in high-risk zones focusing on primary themes and example cases.", 
-            link: "papers/protocol-5a.pdf", 
-            id: "PAPER-5A" 
-        },
-        { 
-            title: "Counterterrorism Finance", 
-            desc: "Analysis of economic sanction failures against hybrid actors like Hezbollah.", 
-            link: "papers/ct-finance.pdf", 
-            id: "PAPER-CTF" 
-        }
+    reports: [
+        { title: "Protocol 5A Analysis", desc: "Security protocols in high-risk zones. Focus on non-kinetic escalation.", link: "reports/report1.pdf", id: "DOC-001" },
+        { title: "East Asia Dynamics", desc: "Treaty shifts and non-kinetic escalation patterns on the peninsula.", link: "reports/report2.pdf", id: "DOC-002" }
     ],
-
-    // 3. VIDEOS DATA
     videos: [
-        { title: "Conflict Progression", desc: "Regional escalation points and non-kinetic patterns.", youtubeID: "dQw4w9WgXcQ" },
-        { title: "CIRAM-2 Demo", desc: "Regenerating entire lecture scripts from sporadic notes using local Gemini API.", youtubeID: "dQw4w9WgXcQ" }
+        { title: "Conflict Progression", desc: "2024 Timeline Analysis and regional escalation points.", youtubeID: "dQw4w9WgXcQ" },
+        { title: "CIRAM-2 Demo", desc: "Architecture breakdown of the information recollection model.", youtubeID: "dQw4w9WgXcQ" }
     ]
 };

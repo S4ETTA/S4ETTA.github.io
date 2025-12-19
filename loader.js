@@ -1,10 +1,10 @@
-/* --- SAETTA CONTENT LOADER V3.0 --- */
+/* --- CONTENT LOADER ENGINE V2.0 --- */
 
-function loadTools() {
-    const container = document.getElementById('tool-grid');
+function loadSystems() {
+    const container = document.getElementById('system-grid');
     if (!container) return;
     let html = '';
-    db.tools.forEach(item => {
+    db.systems.forEach(item => {
         html += `
             <div class="system-card">
                 <div class="sys-thumb">${item.thumb}</div>
@@ -19,11 +19,11 @@ function loadTools() {
     container.innerHTML = html;
 }
 
-function loadPapers() {
-    const container = document.getElementById('paper-grid');
+function loadReports() {
+    const container = document.getElementById('report-grid');
     if (!container) return;
     let html = '';
-    db.papers.forEach(item => {
+    db.reports.forEach(item => {
         html += `
             <div class="report-card">
                 <div class="sys-content">
@@ -59,7 +59,7 @@ function loadVideos() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadTools();
-    loadPapers();
+    loadSystems();
+    loadReports();
     loadVideos();
 });
