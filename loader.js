@@ -1,7 +1,7 @@
 /* --- CONTENT LOADER ENGINE V2.0 --- */
 
 function loadSystems() {
-    const container = document.getElementById('system-grid');
+    const container = document.getElementById('tool-grid');
     if (!container) return;
     let html = '';
     db.systems.forEach(item => {
@@ -20,7 +20,7 @@ function loadSystems() {
 }
 
 function loadReports() {
-    const container = document.getElementById('report-grid');
+    const container = document.getElementById('paper-grid');
     if (!container) return;
     let html = '';
     db.reports.forEach(item => {
