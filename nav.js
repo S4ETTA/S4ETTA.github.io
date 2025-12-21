@@ -1,6 +1,6 @@
 /* --- SAETTA NAVIGATION COMPONENT V5.1 --- */
 /* Master Version Control - Increment this to force global cache update */
-const SAETTA_VERSION = "1.0.3"; 
+const SAETTA_VERSION = "1.0.4"; 
 
 const navHTML = `
     <div class="top-bar">
