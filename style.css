@@ -32,7 +32,7 @@ a { color: var(--ink-color); text-decoration: none; transition: 0.2s; }
 }
 
 .logo-img { width: 80px; height: auto; margin-right: 20px; }
-.social-icon { width: 24px; height: 24px; opacity: 0.8; transition: 0.2s; filter: brightness(0) invert(1); }
+.social-icon { width: auto; height: 18px; opacity: 0.8; transition: 0.2s; filter: sepia(18%) hue-rotate(350deg) saturate(300%) brightness(90%); }
 .social-icon:hover { opacity: 1; transform: scale(1.1); }
 
 .identity-block { display: flex; align-items: center; }
@@ -57,9 +57,13 @@ body > *:not(#saetta-nav):not(script) {
 }
 
 /* Static Sections (Bio) */
-.module { 
-    margin-bottom: 80px; 
+.module{ 
+    margin-bottom: 8px;  
     padding: 0; /* No padding/border for bio text as requested */
+}
+
+.module ul {
+    margin-top: 0;
 }
 
 /* Interactive Cards (Systems/Reports) */

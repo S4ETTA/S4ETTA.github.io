@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S7 PHOBOS</title>
+    <link rel="stylesheet" href="style.css?v=1.0.7">
+</head>
+<body>
+
+    <div id="saetta-nav"></div>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>S7 PHOBOS</h1>
+            <p>Global Early Warning and Threat Assessment Platform</p>
+        </header>
+
+        <section class="alternating-row">
+            <div class="row-image">
+                <img src="assets/phobos-ui.png" alt="Phobos Interface">
+            </div>
+            <div class="row-text">
+                <h3>SYSTEM OVERVIEW</h3>
+                <p>PHOBOS is a top-down global awareness dashboard designed to autonomously aggregate disparate intelligence 
+                    streams into a unified operational picture, cross referencing spatial and temporal data to find critical
+                    patterns of interest for intelligence analysts. 
+                </p>
+            </div>
+        </section>
+
+        <section class="alternating-row">
+            <div class="row-image">
+                <img src="assets/phobos-data.png" alt="Data Flow">
+            </div>
+            <div class="row-text">
+                <h3>DATA AGGREGATION AND INGESTION</h3>
+                <p>PHOBOS uses an Action-based data aggregator with customisable sources and priority keywords to automatically 
+                    scrape official and unofficial sources of information. The data is then ingested by the onboard AI and 
+                    processed into keyword-based objects, which is then sorted by event priorities, guided by mathmatical, 
+                    historical, and geospatial algorithms. 
+                </p>
+                <p>The processed data is projected into a node graph, with the priority scores being used to project relative 
+                    and objective threat levels, and to read the escalation patterns to telegraph potential future developments.
+                    When a "contingency" in a region is detected, a separate node is created to automatically track its development
+                    over time, connecting all related events and calculating their threat indexes in real-time.
+                </p>
+            </div>
+        </section>
+
+        <section class="alternating-row">
+            <div class="row-image">
+                <img src="assets/phobos-map.png" alt="Geospatial Mapping">
+            </div>
+            <div class="row-text">
+                <h3>ANALYSIS FEATURES</h3>
+                <p>Each event is stamped onto a geospatial map for visual analysis, and are logged onto a table for necessary 
+                    corrections. Each region above a certain threat level can be isolated, briefed, and exported as a report
+                    for man-in-the-loop analysis. The system also supports manual data input and ingestion when needed for 
+                    HUMINT or OSINT sources.
+                </p>
+            </div>
+        </section>
+
+        <footer class="tool-footer">
+            <a href="tools.html" class="btn"><< BACK TO DATABASE</a>
+        </footer>
+    </main>
+
+    <script src="nav.js?v=1.0.7"></script>
+</body>
+</html>

@@ -5,7 +5,7 @@ const SAETTA_VERSION = "1.0.3";
 const navHTML = `
     <div class="top-bar">
         <div class="identity-block">
-            <img src="logo.png" alt="Logo" class="logo-img">
+            <img src="assets/logo.png" alt="Logo" class="logo-img">
             <div class="identity">
                 <h1>Charles (Min Ha) Kim</h1>
                 <div class="saetta-title">INTELLIGENCE ANALYST</div>
@@ -22,13 +22,13 @@ const navHTML = `
             
             <div class="socials">
                 <a href="https://x.com/S4ETTA" target="_blank" title="X / Twitter">
-                    <img src="x.png" class="social-icon" alt="X">
+                    <img src="assets/x.png" class="social-icon" alt="X">
                 </a>
                 <a href="https://youtube.com/@S4ETTA" target="_blank" title="YouTube Archive">
-                    <img src="yt.png" class="social-icon" alt="YT">
+                    <img src="assets/yt.png" class="social-icon" alt="YT">
                 </a>
                 <a href="mailto:charleskimisr@gmail.com" title="Direct Contact">
-                    <img src="email.png" class="social-icon" alt="Email">
+                    <img src="assets/email.png" class="social-icon" alt="Email">
                 </a>
             </div>
         </div>

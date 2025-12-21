@@ -1,10 +1,10 @@
 /* --- CONTENT LOADER ENGINE V2.0 --- */
 
-function loadSystems() {
+function loadTools() {
     const container = document.getElementById('tool-grid');
     if (!container) return;
     let html = '';
-    db.systems.forEach(item => {
+    db.tools.forEach(item => {
         html += `
             <div class="system-card">
                 <div class="sys-thumb">${item.thumb}</div>
@@ -19,11 +19,11 @@ function loadSystems() {
     container.innerHTML = html;
 }
 
-function loadReports() {
+function loadPapers() {
     const container = document.getElementById('paper-grid');
     if (!container) return;
     let html = '';
-    db.reports.forEach(item => {
+    db.papers.forEach(item => {
         html += `
             <div class="report-card">
                 <div class="sys-content">
@@ -59,7 +59,7 @@ function loadVideos() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadSystems();
-    loadReports();
+    loadTools();
+    loadPapers();
     loadVideos();
 });
