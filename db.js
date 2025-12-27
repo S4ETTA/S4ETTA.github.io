@@ -17,7 +17,7 @@ const db = {
     papers: [
         { title: "Failure of Economic Sanctions against MENA Hybrid Actors", 
             desc: "Research into modernisation efforts and sanction evasion techniques by Hezbollah and the Houthis (Ansar-Allah).", 
-            link: "papers/Failure of Economic Statecraft.pdf", 
+            link: "papers/paper_Failure of Economic Statecraft.pdf", 
             id: "Terrorism" },
         { title: "Counterterrorism Strategies in the Sahel Region", 
             desc: "Research of effective counterterrorism measures and regional cooperation frameworks in Sahel.", 
@@ -31,5 +31,13 @@ const db = {
         { title: "Groups: Hezbollah", 
             desc: "Historical and structural overview of Hezbollah.", 
             youtubeID: "dQw4w9WgXcQ" }
+    ],
+    dataReports: [
+        {
+            title: "Hezbollah Route Database",
+            desc: "Comprehensive visual database of known Hezbollah activity routes",
+            link: "url",
+            id: "Hezbollah"
+        }
     ]
 };

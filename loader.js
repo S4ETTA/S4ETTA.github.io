@@ -20,10 +20,27 @@ function loadTools() {
 }
 
 function loadPapers() {
-    const container = document.getElementById('paper-grid');
-    if (!container) return;
+    // 1. Load Primary Academic Papers
+    const papersContainer = document.getElementById('paper-grid');
+    if (papersContainer && db.papers) {
+        renderReportGrid(db.papers, papersContainer);
+    }
+
+    // 2. Load Data Reports (The new category)
+    const dataContainer = document.getElementById('data-reports-grid');
+    if (dataContainer && db.dataReports) {
+        renderReportGrid(db.dataReports, dataContainer);
+    }
+}
+
+/**
+ * Reusable helper to render report-style cards
+ * @param {Array} dataArray - The array from db.js (e.g., db.papers or db.dataReports)
+ * @param {HTMLElement} targetElement - The div where cards should be injected
+ */
+function renderReportGrid(dataArray, targetElement) {
     let html = '';
-    db.papers.forEach(item => {
+    dataArray.forEach(item => {
         html += `
             <div class="report-card">
                 <div class="sys-content">
@@ -35,7 +52,7 @@ function loadPapers() {
             </div>
         `;
     });
-    container.innerHTML = html;
+    targetElement.innerHTML = html;
 }
 
 function loadVideos() {

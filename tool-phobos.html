@@ -3,70 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S7 PHOBOS</title>
-    <link rel="stylesheet" href="style.css?v=1.0.4">
+    <title>S7 PHOBOS // SAETTA</title>
+    <link rel="stylesheet" href="style.css?v=1.1.5">
 </head>
 <body>
 
     <div id="saetta-nav"></div>
 
-    <main class="container">
-        <header class="page-header">
-            <h1>S7 PHOBOS</h1>
-            <p>Global Early Warning and Threat Assessment Platform</p>
-        </header>
+    <main class="container dossier-layout">
+        <aside class="chapter-rail">
+            <div class="rail-header">// CHAPTERS</div>
+            <nav class="rail-nav">
+                <a href="#overview" class="rail-link">01 // OVERVIEW</a>
+                <a href="#ingestion" class="rail-link">02 // INGESTION</a>
+                <a href="#extraction" class="rail-link">03 // EXTRACTION</a>
+                <a href="#matrix" class="rail-link">04 // MATRIX</a>
+                <a href="#roadmap" class="rail-link">05 // ROADMAP</a>
+            </nav>
+        </aside>
 
-        <section class="alternating-row">
-            <div class="row-image">
-                <img src="assets/phobos-ui.png" alt="Phobos Interface">
-            </div>
-            <div class="row-text">
-                <h3>SYSTEM OVERVIEW</h3>
-                <p>PHOBOS is a top-down global awareness dashboard designed to autonomously aggregate disparate intelligence 
-                    streams into a unified operational picture, cross referencing spatial and temporal data to find critical
-                    patterns of interest for intelligence analysts. 
-                </p>
-            </div>
-        </section>
+        <div class="dossier-body">
+            <header class="page-header">
+                <h1>S7 PHOBOS</h1>
+                <p>// GLOBAL EARLY WARNING AND THREAT ASSESSMENT PLATFORM</p>
+            </header>
 
-        <section class="alternating-row">
-            <div class="row-image">
-                <img src="assets/phobos-data.png" alt="Data Flow">
+            <div class="carousel-container">
+                <div class="carousel-slide"><img src="assets/phobos_terminal.png" alt="Phobos Terminal UI"></div>
+                <div class="carousel-slide"><img src="assets/phobos_nodegraph.png" alt="Network Graph Visualization"></div>
+                                
+                <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="carousel-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
             </div>
-            <div class="row-text">
-                <h3>DATA AGGREGATION AND INGESTION</h3>
-                <p>PHOBOS uses an Action-based data aggregator with customisable sources and priority keywords to automatically 
-                    scrape official and unofficial sources of information. The data is then ingested by the onboard AI and 
-                    processed into keyword-based objects, which is then sorted by event priorities, guided by mathmatical, 
-                    historical, and geospatial algorithms. 
-                </p>
-                <p>The processed data is projected into a node graph, with the priority scores being used to project relative 
-                    and objective threat levels, and to read the escalation patterns to telegraph potential future developments.
-                    When a "contingency" in a region is detected, a separate node is created to automatically track its development
-                    over time, connecting all related events and calculating their threat indexes in real-time.
-                </p>
-            </div>
-        </section>
 
-        <section class="alternating-row">
-            <div class="row-image">
-                <img src="assets/phobos-map.png" alt="Geospatial Mapping">
-            </div>
-            <div class="row-text">
-                <h3>ANALYSIS FEATURES</h3>
-                <p>Each event is stamped onto a geospatial map for visual analysis, and are logged onto a table for necessary 
-                    corrections. Each region above a certain threat level can be isolated, briefed, and exported as a report
-                    for man-in-the-loop analysis. The system also supports manual data input and ingestion when needed for 
-                    HUMINT or OSINT sources.
-                </p>
-            </div>
-        </section>
+            <article class="content-stream">
+                
+                <section id="overview" class="text-block">
+                    <h3>01 // SYSTEM OVERVIEW</h3>
+                    <p>PHOBOS is a Dockerized, full-stack intelligence dashboard designed to autonomously ingest, normalize, and visualize geopolitical threats in real-time. Unlike traditional news aggregators that simply list headlines, PHOBOS employs a custom Graph Theory architecture to map relationships between isolated events, identifying "Crisis Clusters" before they hit mainstream saturation. By transforming raw, unstructured noise into a quantifiable Weighted Threat Score (WTS), it serves as a force-multiplier for intelligence analysts, automating the initial triage phase of the intelligence cycle.</p>
+                </section>
 
-        <footer class="tool-footer">
-            <a href="tools.html" class="btn"><< BACK TO DATABASE</a>
-        </footer>
+                <section id="ingestion" class="text-block">
+                    <h3>02 // DATA AGGREGATION AND INGESTION</h3>
+                    <p>The system utilizes a multi-vector ingestion pipeline designed for high availability and zero data loss. It features an automated feed handler triggered by GitHub Actions that pulls raw JSON payloads from international news feeds and deposits them into a localized processing queue. Simultaneously, the system integrates a manual injection protocol (Protocol 5A), allowing analysts to merge classified HUMINT or offline OSINT notes directly into the automated data stream. To prevent API bottlenecks during high-volume news cycles, the ingestion engine utilizes an autonomous Exponential Backoff mechanism that throttles intake speed upon detecting rate limits, ensuring continuous operation without crashing.</p>                
+                </section>
+
+                <section id="extraction" class="text-block">
+                    <h3>03 // DATA EXTRACTION AND PROJECTION</h3>
+                    <p>This is the core of the PHOBOS intelligence engine, powered by a 27B Parameter Instruction-Tuned Model (Gemma 3) that moves beyond simple keyword matching to perform semantic understanding. The extraction process uses a hybrid parsing engine: a primary layer enforces strict JSON schema for event scoring and location data, while a secondary Regex safety net recovers data if the model produces unstructured text, ensuring near-perfect ingestion reliability.</p>
+                    <p>To solve the issue of duplicate reporting, PHOBOS employs a Retrieval-Augmented Normalization strategy. Before processing, the system dynamically injects a list of active contingencies into the AI's context, allowing it to semantically map new headlines to existing crisis IDs (e.g., mapping "Khan Yunis" to "Israel-Gaza Conflict"). Finally, data is visualized via NetworkX as a gravity-based graph where events "orbit" central Crisis Nodes, allowing analysts to gauge conflict intensity by cluster density.</p>                
+                </section>
+
+                <section id="matrix" class="text-block">
+                    <h3>04 // THREAT MATRIX</h3>
+                    <p>The Threat Matrix moves beyond qualitative description to a quantitative Weighted Threat Score (WTS), calculated to prioritize active acceleration over historical volume. The equation combines the historical accumulation of threat points ($S_{total}$) with a "Recency Multiplier" ($S_{today} \times 2.0$) and an "Intensity Weight" ($S_{avg} \times 8.0$). This formula ensures that a country experiencing a sudden, high-intensity spike (like a war outbreak) ranks higher than a country with a long history of low-level unrest. Countries crossing a specific WTS threshold automatically trigger a "Red Alert" state in the UI, locking the dashboard to that region for immediate assessment.</p>
+                </section>
+
+                <section id="roadmap" class="text-block">
+                    <h3>05 // FUTURE PLANS</h3>
+                    <p>The roadmap for PHOBOS involves moving from Description to Prediction through an Event Variance Projection (EVP) engine. Currently in development, this predictive model adapts financial stochastic forecasting to geopolitical volatility. It is designed to draft one to three probabilistic timelines (Best, Worst, and Likely cases) displayed as diverging graph lines over a 48-hour horizon. These projections will be based on historical case data, regional context, and key driver events. Additionally, core components of the graph logic are scheduled to be released as open-source libraries to contribute to the wider OSINT developer community.</p>
+                </section>
+
+            </article>
+
+            <footer class="tool-footer">
+                <hr class="saetta-divider">
+                <div class="footer-btns">
+                    <a href="tools.html" class="btn"><< BACK TO DATABASE</a>
+                    <a href="#" class="btn btn-disabled">ACCESS COMING SOON</a>
+                </div>
+            </footer>
+        </div>
     </main>
 
-    <script src="nav.js?v=1.0.4"></script>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("carousel-slide");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+    </script>
+
+    <script src="nav.js?v=1.1.5"></script>
 </body>
 </html>

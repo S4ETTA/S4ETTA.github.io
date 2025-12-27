@@ -1,20 +1,30 @@
-/* --- SAETTA MASTER STYLESHEET V6.2 --- */
+/* --- SAETTA MASTER STYLESHEET V8.0 --- */
+/* Optimized for Wide-Layout Dossiers and Carousel Integration */
+
 :root {
     --bg-color: #E5D3A5;      /* Gripen Sand */
     --ink-color: #1A1A1A;     /* Cockpit Black */
     --accent-red: #AA3333;    /* Warning Red */
+    --secondary-color: #595038; 
 }
 
+/* --- CORE ENGINE --- */
 body {
     background-color: var(--bg-color);
     color: var(--ink-color);
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0; 
-    background-image: linear-gradient(var(--ink-color) 0.5px, transparent 0.5px), linear-gradient(90deg, var(--ink-color) 0.5px, transparent 0.5px);
+    background-image: linear-gradient(var(--ink-color) 0.5px, transparent 0.5px), 
+                      linear-gradient(90deg, var(--ink-color) 0.5px, transparent 0.5px);
     background-size: 100px 100px;
 }
-body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); opacity: 0.94; z-index: -1; }
+
+body::before { 
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: var(--bg-color); opacity: 0.94; z-index: -1; 
+}
+
 a { color: var(--ink-color); text-decoration: none; transition: 0.2s; }
 
 /* --- NAVIGATION BAR --- */
@@ -23,17 +33,29 @@ a { color: var(--ink-color); text-decoration: none; transition: 0.2s; }
     color: var(--bg-color);
     width: 100%;
     padding: 25px 60px; 
-    box-sizing: border-box; /* Ensures padding doesn't add to width */
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 40px; /* Spacing between nav and content */
     border-bottom: 4px solid #000;
 }
 
 .logo-img { width: 80px; height: auto; margin-right: 20px; }
-.social-icon { width: auto; height: 18px; opacity: 0.8; transition: 0.2s; filter: sepia(18%) hue-rotate(350deg) saturate(300%) brightness(90%); }
-.social-icon:hover { opacity: 1; transform: scale(1.1); }
+
+.social-icon { 
+    height: 18px; 
+    width: auto; 
+    opacity: 0.8; 
+    transition: 0.2s; 
+    filter: sepia(18%) hue-rotate(350deg) saturate(300%) brightness(90%); 
+}
+
+.social-icon:hover { 
+    opacity: 1; 
+    transform: scale(1.1); 
+    filter: invert(21%) sepia(58%) saturate(3474%) hue-rotate(346deg) brightness(89%) contrast(90%);
+}
 
 .identity-block { display: flex; align-items: center; }
 .identity h1 { margin: 0; font-size: 2.2rem; text-transform: uppercase; letter-spacing: -1px; line-height: 1; font-weight: 900; color: var(--bg-color); }
@@ -46,27 +68,131 @@ nav a:hover, nav a.active { opacity: 1; color: var(--bg-color); border-bottom: 3
 
 .socials { display: flex; gap: 15px; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 20px; margin-left: 10px; }
 
-/* --- LAYOUT & SPACING --- */
+/* --- GLOBAL LAYOUT RESET --- */
 body > *:not(#saetta-nav):not(script) {
-    max-width: 1100px;
+    max-width: 1400px; /* Reduced side margins */
     margin-left: auto;
     margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 0 30px 100px 30px; /* Balanced floor and side clearance */
     box-sizing: border-box; 
 }
 
-/* Static Sections (Bio) */
-.module{ 
-    margin-bottom: 8px;  
-    padding: 0; /* No padding/border for bio text as requested */
-}
-
-.module ul {
+/* --- HEADERS & TITLES --- */
+.page-header {
     margin-top: 0;
+    margin-bottom: 20px; 
 }
 
-/* Interactive Cards (Systems/Reports) */
+.page-header h1 {
+    margin: 0;
+    line-height: 1.2; /* Fixes vertical dash elongation */
+    font-size: 2.5rem;
+}
+
+h2 { 
+    font-size: 1.1rem; border-left: 5px solid var(--ink-color); 
+    padding-left: 15px; text-transform: uppercase; margin-bottom: 30px; 
+    font-weight: 800; letter-spacing: -0.5px; 
+}
+
+/* --- DOSSIER LAYOUT ENGINE --- */
+.dossier-layout {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.chapter-rail {
+    position: sticky;
+    top: 40px;
+    width: 160px;
+    flex-shrink: 0;
+    font-family: Arial, sans-serif;
+    border-right: 1px solid rgba(26, 26, 26, 0.1); /* Subtle rail border */
+}
+
+.rail-header {
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.rail-nav { display: flex; flex-direction: column; gap: 12px; }
+
+.rail-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--ink-color);
+    opacity: 0.4;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.rail-link:hover { opacity: 1; color: var(--accent-red); padding-left: 4px; }
+
+.dossier-body { flex: 1; }
+
+/* --- IMAGE CAROUSEL (PHOBOS) --- */
+.carousel-container {
+    width: 100%;
+    position: relative;
+    margin: 20px 0 60px 0; /* Clear space before text begins */
+    border: 1px solid var(--ink-color);
+    background: var(--ink-color);
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: none; /* Logic handled by tool-phobos inline script */
+    width: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(26, 26, 26, 0.8);
+    color: var(--bg-color);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+.carousel-btn:hover { background: var(--accent-red); }
+
+/* --- TEXT CONTENT STREAM --- */
+.text-block {
+    margin-bottom: 60px;
+}
+
+.text-block h3 {
+    color: var(--accent-red);
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.text-block p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* --- INTERACTIVE GRIDS --- */
+.grid-2 { display: grid !important; grid-template-columns: 220px 1fr; gap: 80px; align-items: start; margin-bottom: 80px; }
+.grid-3 { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+
 .system-card, .report-card { 
     border: 2px solid var(--ink-color); 
     background: rgba(255,255,255,0.05); 
@@ -74,56 +200,46 @@ body > *:not(#saetta-nav):not(script) {
     display: flex; 
     flex-direction: column; 
     transition: 0.2s; 
-    height: 100%;
 }
+
 .system-card:hover, .report-card:hover { 
     transform: translateY(-4px); 
     box-shadow: 6px 6px 0px var(--ink-color); 
 }
 
-h2 { font-size: 1.1rem; border-left: 5px solid var(--ink-color); padding-left: 15px; text-transform: uppercase; margin-bottom: 30px; font-weight: 800; letter-spacing: -0.5px; }
+/* --- FOOTER ELEMENTS --- */
+.btn { 
+    display: inline-block; font-weight: 800; border: 1px solid var(--ink-color); 
+    padding: 8px 12px; font-size: 0.7rem; text-transform: uppercase; 
+    cursor: pointer; transition: 0.2s;
+}
 
-/* Grids */
-.grid-2 { display: grid !important; grid-template-columns: 220px 1fr; gap: 80px; align-items: start; margin-bottom: 80px; }
-.grid-3 { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(240px, 300px)); gap: 30px; justify-content: start; }
-
-/* Components */
-.sys-thumb { width: 100%; height: 130px; background: #d4c495; border-bottom: 1px solid var(--ink-color); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
-.sys-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-.sys-title { font-size: 1rem; font-weight: 800; text-transform: uppercase; margin: 0 0 10px 0; }
-.sys-desc { font-size: 0.85rem; line-height: 1.4; margin-bottom: 15px; color: #1A1A1A; }
-.btn { display: inline-block; font-weight: 800; border: 1px solid var(--ink-color); padding: 8px 12px; font-size: 0.7rem; text-transform: uppercase; cursor: pointer; align-self: flex-start; margin-top: auto; }
 .btn:hover { background: var(--ink-color); color: var(--bg-color); }
 
-.video-container { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-bottom: 1px solid var(--ink-color); }
-.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.btn-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-style: dashed; /* Visual cue for "In Development" */
+}
 
-@media (max-width: 768px) {
-    .grid-2 {
-        grid-template-columns: 1fr; /* Force single column */
-        gap: 40px; /* Reduce gap for smaller screens */
-    }
+.tool-footer {
+    margin-top: 80px;
+}
 
-    .photo-frame {
-        max-width: 220px; /* Keep photo from becoming giant */
-        margin: 0 auto;   /* Center the photo */
-    }
+.footer-btns {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
 
-    .top-bar {
-        padding: 20px;    /* Tighten nav for mobile */
-        flex-direction: column; 
-        gap: 20px;
-    }
+/* --- MOBILE ADAPTATION --- */
+@media (max-width: 950px) {
+    .chapter-rail { display: none; }
+    .dossier-layout { flex-direction: column; }
+}
 
-    .nav-group {
-        width: 100%;
-        justify-content: space-between;
-        margin-top: 20px;
-        gap: 15px;
-    }
-    
-    .socials {
-        padding-left: 10px;
-        margin-left: 0;
-    }
+@media (max-width: 850px) {
+    .top-bar { padding: 20px; flex-direction: column; gap: 20px; }
+    .nav-group { width: 100%; justify-content: space-between; margin-top: 20px; gap: 15px; }
+    .grid-2 { grid-template-columns: 1fr; }
 }
