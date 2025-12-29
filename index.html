@@ -4,33 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAETTA | BIO</title>
-    <link rel="stylesheet" href="style.css?v=1.0.3">
+    <link rel="stylesheet" href="style.css?v=1.5.0">
 </head>
 <body>
     <div id="saetta-nav"></div>
-    <script src="nav.js?v=1.0.3"></script>
+    <script src="nav.js?v=1.5.0"></script>
     
-    <div class="grid-2">
-        <div class="photo-frame">
-            <img src="assets/me.jpg" alt="ID_PHOTO" style="width:100%; border:2px solid var(--ink-color); filter: none;">
-            <div style="border-top:2px solid var(--ink-color); padding:5px; font-size:0.7rem; text-align:right; font-weight:bold;"></div>
-        </div>
-        <div>
-            <section class="module">
-                <h2 style="margin-top:0;">I am an intelligence analyst specialising in early threat detection, regional security, and OSINT. 
-                    I am currently pursuing a Master's degree in International Cooperation and designing advanced analytical tools.</h2>
-                    <p> </p>
-            </section>
+    <main class="container">
+        <div class="bio-layout">
+            <div class="photo-frame">
+                <img src="assets/me.jpg" alt="ID_PHOTO" style="width:100%; filter: grayscale(0%) contrast(110%);">
+                <div style="border-top:2px solid var(--ink-color); padding:8px; font-size:0.7rem; display:flex; justify-content:space-between;">
+                </div>
+            </div>
 
-            <section class="module">
+            <div class="bio-content">
+                <h2>// PROFILE SUMMARY</h2>
+                <p>I am an intelligence analyst specialising in non-state actors, regional security, and OSINT. I am currently pursuing a Master's degree in International Cooperation. I am open to remote contracts and freelance work.</p>
+                
+                <h2 style="margin-top: 40px;">// FOCUS AREAS</h2>
                 <ul>
-                    <li>Autonomous Weapons Systems</li>
+                    <li>Autonomous Weapons Systems & Proliferation</li>
                     <li>Modernisation of Hostile Actors in MENA</li>
                     <li>Artificial Intelligence ISR Platforms</li>
-                    <li>Northeast Asian Geopolitics</li>
+                    <li>Northeast Asian Geopolitics & Security</li>
                 </ul>
-            </section>
+
+                <h2 style="margin-top: 40px;">// CURRENT WORKS</h2>
+                <p>Currently overseeing the development of the <strong>SAETTA</strong> tool suite, including the PHOBOS threat detection engine and DEIMOS bottom-up investigation platform.</p>
+            </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>

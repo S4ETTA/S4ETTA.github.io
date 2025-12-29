@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S7 PHOBOS // SAETTA</title>
-    <link rel="stylesheet" href="style.css?v=1.1.5">
+    <link rel="stylesheet" href="style.css?v=1.5.0">
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
 </head>
+
 <body>
 
     <div id="saetta-nav"></div>
@@ -15,62 +20,105 @@
             <div class="rail-header">// CHAPTERS</div>
             <nav class="rail-nav">
                 <a href="#overview" class="rail-link">01 // OVERVIEW</a>
-                <a href="#ingestion" class="rail-link">02 // INGESTION</a>
-                <a href="#extraction" class="rail-link">03 // EXTRACTION</a>
-                <a href="#matrix" class="rail-link">04 // MATRIX</a>
-                <a href="#roadmap" class="rail-link">05 // ROADMAP</a>
+                <a href="#ingestion" class="rail-link">02 // DATA INGESTION</a>
+                <a href="#extraction" class="rail-link">03 // DATA PROJECTION</a>
+                <a href="#matrix" class="rail-link">04 // THREAT MATRIX</a>
+                <a href="#roadmap" class="rail-link">05 // FUTURE PLANS</a>
             </nav>
         </aside>
 
         <div class="dossier-body">
             <header class="page-header">
-                <h1>S7 PHOBOS</h1>
+                <h1>PHOBOS</h1>
                 <p>// GLOBAL EARLY WARNING AND THREAT ASSESSMENT PLATFORM</p>
             </header>
 
             <div class="carousel-container">
-                <div class="carousel-slide"><img src="assets/phobos_terminal.png" alt="Phobos Terminal UI"></div>
-                <div class="carousel-slide"><img src="assets/phobos_nodegraph.png" alt="Network Graph Visualization"></div>
-                                
+                <div class="carousel-slide" style="display:block;"><img src="assets/phobos_terminal.png"
+                        alt="Phobos Terminal UI"></div>
+                <div class="carousel-slide"><img src="assets/phobos_nodegraph.png" alt="Network Graph Visualization">
+                </div>
+
                 <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
                 <button class="carousel-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
             </div>
 
             <article class="content-stream">
-                
                 <section id="overview" class="text-block">
                     <h3>01 // SYSTEM OVERVIEW</h3>
-                    <p>PHOBOS is a Dockerized, full-stack intelligence dashboard designed to autonomously ingest, normalize, and visualize geopolitical threats in real-time. Unlike traditional news aggregators that simply list headlines, PHOBOS employs a custom Graph Theory architecture to map relationships between isolated events, identifying "Crisis Clusters" before they hit mainstream saturation. By transforming raw, unstructured noise into a quantifiable Weighted Threat Score (WTS), it serves as a force-multiplier for intelligence analysts, automating the initial triage phase of the intelligence cycle.</p>
+                    <p>PHOBOS is a Dockerized, full-stack intelligence dashboard designed to autonomously ingest,
+                        normalize, and visualize geopolitical threats in real-time. Unlike traditional news aggregators
+                        that simply list headlines, PHOBOS employs a custom graph theory architecture to map
+                        relationships between isolated events, identifying "Crisis Clusters" before they hit mainstream
+                        saturation.</p>
                 </section>
 
                 <section id="ingestion" class="text-block">
-                    <h3>02 // DATA AGGREGATION AND INGESTION</h3>
-                    <p>The system utilizes a multi-vector ingestion pipeline designed for high availability and zero data loss. It features an automated feed handler triggered by GitHub Actions that pulls raw JSON payloads from international news feeds and deposits them into a localized processing queue. Simultaneously, the system integrates a manual injection protocol (Protocol 5A), allowing analysts to merge classified HUMINT or offline OSINT notes directly into the automated data stream. To prevent API bottlenecks during high-volume news cycles, the ingestion engine utilizes an autonomous Exponential Backoff mechanism that throttles intake speed upon detecting rate limits, ensuring continuous operation without crashing.</p>                
+                    <h3>02 // DATA INGESTION</h3>
+                    <p>The system utilizes a <strong>multi-vector ingestion pipeline</strong> designed for high
+                        availability. It features an automated feed handler triggered by GitHub Actions that pulls raw
+                        JSON payloads from international news feeds. Simultaneously, it integrates a manual injection
+                        protocol, allowing analysts to merge classified HUMINT or offline OSINT notes directly into the
+                        stream.</p>
                 </section>
 
                 <section id="extraction" class="text-block">
-                    <h3>03 // DATA EXTRACTION AND PROJECTION</h3>
-                    <p>This is the core of the PHOBOS intelligence engine, powered by a 27B Parameter Instruction-Tuned Model (Gemma 3) that moves beyond simple keyword matching to perform semantic understanding. The extraction process uses a hybrid parsing engine: a primary layer enforces strict JSON schema for event scoring and location data, while a secondary Regex safety net recovers data if the model produces unstructured text, ensuring near-perfect ingestion reliability.</p>
-                    <p>To solve the issue of duplicate reporting, PHOBOS employs a Retrieval-Augmented Normalization strategy. Before processing, the system dynamically injects a list of active contingencies into the AI's context, allowing it to semantically map new headlines to existing crisis IDs (e.g., mapping "Khan Yunis" to "Israel-Gaza Conflict"). Finally, data is visualized via NetworkX as a gravity-based graph where events "orbit" central Crisis Nodes, allowing analysts to gauge conflict intensity by cluster density.</p>                
+                    <h3>03 // DATA PROJECTION</h3>
+                    <p>Core intelligence is powered by a 27B Parameter Instruction-Tuned Model (Gemma 3). The extraction
+                        process uses a <strong>hybrid parsing engine</strong>: a primary layer enforces strict JSON
+                        schema for event scoring, while a secondary Regex safety net recovers data if the model produces
+                        unstructured text. Data is visualized via NetworkX as a gravity-based graph where events "orbit"
+                        central Crisis Nodes. Duplicate and reposted events are filtered out using Levenshtein distance
+                        and crisis node connections in order to maintain accuracy in threat assessment.</p>
                 </section>
 
                 <section id="matrix" class="text-block">
                     <h3>04 // THREAT MATRIX</h3>
-                    <p>The Threat Matrix moves beyond qualitative description to a quantitative Weighted Threat Score (WTS), calculated to prioritize active acceleration over historical volume. The equation combines the historical accumulation of threat points ($S_{total}$) with a "Recency Multiplier" ($S_{today} \times 2.0$) and an "Intensity Weight" ($S_{avg} \times 8.0$). This formula ensures that a country experiencing a sudden, high-intensity spike (like a war outbreak) ranks higher than a country with a long history of low-level unrest. Countries crossing a specific WTS threshold automatically trigger a "Red Alert" state in the UI, locking the dashboard to that region for immediate assessment.</p>
+                    <p>The Threat Matrix moves beyond qualitative description to a quantitative Weighted Threat Score
+                        (WTS). The equation combines the historical accumulation of threat points ($S_{total}$) with a
+                        "Recency Multiplier" and an "Intensity Weight":</p>
+
+                    <div style="font-size: 1.3rem; margin: 20px 0; color: var(--ink-color);">
+                        \[
+                        WTS = S_{total} + (S_{today} \times 2.0) + (S_{avg} \times 8.0)
+                        \]
+                    </div>
+
+                    <ul style="line-height: 1.6; margin-top: 20px;">
+                        <li style="margin-bottom: 10px;">
+                            <strong>\(S_{total}\) (Total Score):</strong> The historical accumulation of all threat
+                            points (Stability).
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>\(S_{today}\) (Recency Multiplier):</strong> Events happening <em>now</em> are
+                            weighted double to alert analysts to immediate escalations.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>\(S_{avg}\) (Intensity Weight):</strong> The average severity of events. A country
+                            with a few high-severity events (War) will rank higher than a country with many low-severity
+                            events (Protests).
+                        </li>
+                    </ul>
+
+                    <p style="margin-top: 20px;">This formula ensures that active acceleration is prioritized over
+                        historical volume. Countries crossing a specific WTS threshold automatically trigger a "Red
+                        Alert" state in the UI.</p>
                 </section>
 
                 <section id="roadmap" class="text-block">
                     <h3>05 // FUTURE PLANS</h3>
-                    <p>The roadmap for PHOBOS involves moving from Description to Prediction through an Event Variance Projection (EVP) engine. Currently in development, this predictive model adapts financial stochastic forecasting to geopolitical volatility. It is designed to draft one to three probabilistic timelines (Best, Worst, and Likely cases) displayed as diverging graph lines over a 48-hour horizon. These projections will be based on historical case data, regional context, and key driver events. Additionally, core components of the graph logic are scheduled to be released as open-source libraries to contribute to the wider OSINT developer community.</p>
+                    <p>Moving from observation to prediction through an <strong>Event Variance Projection (EVP)
+                            engine</strong>. This predictive model adapts stock market forecasting algorithm to
+                        geopolitical volatility, drafting probabilistic timelines (Best, Worst, and Likely cases)
+                        displayed as diverging graph lines.</p>
                 </section>
-
             </article>
 
             <footer class="tool-footer">
-                <hr class="saetta-divider">
                 <div class="footer-btns">
-                    <a href="tools.html" class="btn"><< BACK TO DATABASE</a>
-                    <a href="#" class="btn btn-disabled">ACCESS COMING SOON</a>
+                    <a href="tools.html" class="btn">
+                        << BACK TO DATABASE</a>
+                            <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed;">ACCESS SOON</a>
                 </div>
             </footer>
         </div>
@@ -78,23 +126,16 @@
 
     <script>
         let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function changeSlide(n) {
-            showSlides(slideIndex += n);
-        }
-
+        function changeSlide(n) { showSlides(slideIndex += n); }
         function showSlides(n) {
             let slides = document.getElementsByClassName("carousel-slide");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slides[slideIndex-1].style.display = "block";  
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+            slides[slideIndex - 1].style.display = "block";
         }
     </script>
-
-    <script src="nav.js?v=1.1.5"></script>
+    <script src="nav.js?v=1.5.0"></script>
 </body>
+
 </html>
