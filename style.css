@@ -151,7 +151,7 @@ h2 {
 }
 .prev-btn { left: 0; } .next-btn { right: 0; }
 
-.text-block { margin-bottom: 50px; border-bottom: 1px dashed var(--ink-color); padding-bottom: 30px; }
+.text-block { margin-bottom: 20px; border-bottom: 1px dashed var(--ink-color); padding-bottom: 10px; }
 .text-block h3 { margin-top: 0; font-size: 0.9rem; opacity: 0.6; margin-bottom: 10px; }
 
 /* --- MOBILE RESPONSIVE --- */

@@ -3,26 +3,22 @@ const db = {
     tools: [
         { title: "PHOBOS", 
             desc: "Ontology-based global early warning and threat assessment platform.", 
-            thumb: "assets/tools_phobos.png", 
+            thumb: "assets/phobos_logo.jpg", 
             link: "tool-phobos.html" },
         { title: "WARNINGSTAR", 
             desc: "Discord-bound data aggregator with customisable sources and keyword triggers.", 
-            thumb: "assets/tools_warningstar.png", 
+            thumb: "assets/warningstar_logo.jpg", 
             link: "tool-warningstar.html" },
         { title: "DEIMOS", 
             desc: "Adaptive open-source investigation platform and tracker.", 
-            thumb: "assets/tools_deimos.png", 
+            thumb: "assets/deimos_logo.jpg", 
             link: "tool-deimos.html" }
     ],
     papers: [
         { title: "Failure of Economic Sanctions against MENA Hybrid Actors", 
             desc: "Research into modernisation efforts and sanction evasion techniques by Hezbollah and the Houthis (Ansar-Allah).", 
-            link: "papers/paper_Failure of Economic Statecraft.pdf", 
-            id: "Economic Statecraft, Terrorism" },
-        { title: "Counterterrorism Strategies in the Sahel Region", 
-            desc: "Research of effective counterterrorism measures and regional cooperation frameworks in Sahel.", 
-            link: "papers/Counterterrorism Strategies in the Sahel Region.pdf", 
-            id: "Counterterrorism" }
+            link: "papers/CharlesKim_Parasitic Resilience.pdf", 
+            id: "Economic Statecraft, Terrorism" }        
     ],
     videos: [
         { title: "Groups: JNIM", 
