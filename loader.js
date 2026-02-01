@@ -41,7 +41,7 @@ function renderReportGrid(dataArray, targetElement) {
                     <div style="font-size:0.7rem; opacity:0.6; margin-bottom:5px;">ID: ${item.id}</div>
                     <h3 class="sys-title">${item.title}</h3>
                     <p class="sys-desc">${item.desc}</p>
-                    <a href="${item.link}" target="_blank" class="btn">[ DOWNLOAD PDF ]</a>
+                    <a href="${item.link}" target="_blank" class="btn">[ ACCESS ]</a>
                 </div>
             </div>
         `;

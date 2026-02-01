@@ -15,16 +15,16 @@
             <div class="rail-header">// SYSTEM NAV</div>
             <nav class="rail-nav">
                 <a href="#overview" class="rail-link">01 // OVERVIEW</a>
-                <a href="#arch" class="rail-link">02 // ARCHITECTURE</a>
-                <a href="#features" class="rail-link">03 // FEATURES</a>
-                <a href="#access" class="rail-link">04 // ACCESS</a>
+                <a href="#aggregator" class="rail-link">02 // AGGREGATOR</a>
+                <a href="#briefing" class="rail-link">03 // BRIEFING</a>
+                <a href="#deployment" class="rail-link">04 // DEPLOYMENT</a>
             </nav>
         </aside>
 
         <div class="dossier-body">
             <header class="page-header">
                 <h1>WARNINGSTAR</h1>
-                <p>// SIGINT AGGREGATOR AND DISCORD COMBAT AI</p>
+                <p>// DISCORD-BOUND INTERNATIONAL SECURITY DATA AGGREGATOR</p>
             </header>
 
             <div class="carousel-container">
@@ -46,28 +46,32 @@
             <article class="content-stream">
                 <section id="overview" class="text-block">
                     <h3>01 // SYSTEM OVERVIEW</h3>
-                    <p>WARNINGSTAR is a Discord-bound intelligence aggregator and combat analysis AI. Named after specialized intelligence aircraft, it serves as a central hub for data collection and real-time awareness within collaborative environments. It bridges the gap between raw OSINT feeds and team-based communication platforms.</p>
+                    <p>WARNINGSTAR is a Discord-bound international security data aggregator. It serves as a news aggregator for discord servers, providing real-time updates on global security issues, and drafting region-based intelligence briefings every week. The system is built on a Python backend integrating specifically with the Discord.py library. It utilises the Discord messaging app as frontend, taking advantage of both its well-designed UI and channel structures, as well as the built-in backend security.</p>
                 </section>
 
-                <section id="arch" class="text-block">
-                    <h3>02 // DEPLOYMENT ARCHITECTURE</h3>
-                    <p>The system is built on a Python backend integrating specifically with the Discord.py library. It utilizes flexible API hooks to scrape, format, and push OSINT data directly into dedicated server channels. The bot operates on a sharded architecture to ensure uptime across multiple intelligence cells simultaneously.</p>                
+                <section id="aggregator" class="text-block">
+                    <h3>02 // DATA AGGREGATION (Channel Required: #warningstar-feed)</h3>
+                    <p><strong>Data Aggregation:</strong> WARNINGSTAR autonomously wakes up every 2 hours through Github Actions and collects the newest data from specified and customisable news sources.</p>
+                    <p><strong>Data Filtering:</strong> Once collected, the system internally filters through and only maintains articles relevant to the current operational context, through a combination of customisable keyword focuses.</p>
+                    <p><strong>Data Display:</strong> Filtered data is displayed in a dedicated Discord channel in the form of an easy-to-read embed summary, and the source url. Each displayed article is saved in an internal database to prevent duplication, and to be used by the AI for weekly briefing.</p>                
                 </section>
 
-                <section id="features" class="text-block">
-                    <h3>03 // CORE FUNCTIONS</h3>
-                    <p><strong>Keyword Triggers:</strong> Users can set watch-lists for specific regional developments (e.g., "South China Sea", "Idlib"), triggering immediate pings upon detection.</p>
-                    <p><strong>Combat Analysis:</strong> Automated streams that parse combat reports and provide summary assessments.</p>
-                    <p><strong>Sporadic Intel Aggregation:</strong> Designed to handle irregular, high-velocity data dumps typical of conflict zones.</p>
+                <section id="briefing" class="text-block">
+                    <h3>03 // WEEKLY BRIEFING (Channel Required: #warningstar-brief)</h3>
+                    <p>Every Monday at 00:00 UTC, WARNINGSTAR generates a comprehensive weekly intelligence briefing of the past week, summarised and organised by an onboard AI. Each summary is sorted by their respective regions (Americas, US Politics, Europe, MENA, Indopacific)</p>
                 </section>
 
-                <section id="access" class="text-block">
-                    <h3>04 // ACCESS PROTOCOL</h3>
-                    <p>WARNINGSTAR is currently available for authorized deployment. Use the link below to integrate the bot into your command server.</p>
+                <section id="deployment" class="text-block">
+                    <h3>04 // Deployment</h3>
+                    <p>WARNINSTAR is complete and ready for deployment. Click the link below to invite it into a server of your choice. All required permissions are listed in the authorization link. Once invited, the system does not require any manual tuning nor modification. All tasks are automated. Make sure that the server has the required channels:
+                    </p>
+                    <p><strong>#warningstar-feed</strong></p>
+                    <p><strong>#warningstar-brief</strong></p>
+                    <p>Note: If you do not wish to use the briefing feature, you can simply delete the #warningstar-brief channel. It will not affect the core functionality of the system.</p>
                     <br>
                     <a href="https://discord.com/oauth2/authorize?client_id=1420757957477535944&permissions=183296&integration_type=0&scope=bot" 
                        class="btn" style="background: var(--accent-red); color: white; border-color: var(--accent-red); width: 100%; text-align: center;">
-                       AUTHORIZE CONNECTION >>
+                       AUTHORIZE CONNECTION
                     </a>
                 </section>
             </article>

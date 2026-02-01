@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEZBOLLAH TARGET SHEET</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css?v=11.7">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        /* --- LOCAL MAP STYLES --- */
+        #intel-map {
+            width: 100%;
+            height: 600px;
+            background: #111;
+            border: 2px solid var(--ink-color);
+            overflow: hidden;
+            position: relative;
+            z-index: 1; /* Keeps map below nav */
+        }
+        
+        /* POPUP STYLING */
+        .leaflet-popup-content-wrapper {
+            background: var(--bg-color);
+            border: 2px solid var(--ink-color);
+            border-radius: 0;
+            padding: 0;
+        }
+        .leaflet-popup-tip { background: var(--ink-color); }
+        .leaflet-popup-content { margin: 15px; width: 260px !important; color: var(--ink-color); }
+        .pop-title { font-weight: 900; border-bottom: 2px solid var(--ink-color); margin-bottom: 5px; font-size: 1rem; }
+        .pop-meta { font-size: 0.75rem; font-weight: bold; color: var(--accent-red); margin-bottom: 8px; letter-spacing: 1px; }
+
+        /* LEGEND OVERLAY */
+        .map-legend {
+            position: absolute;
+            bottom: 20px; right: 20px;
+            background: var(--bg-color);
+            border: 2px solid var(--ink-color);
+            padding: 15px;
+            z-index: 1000; /* FORCE ON TOP */
+            width: 200px;
+            font-size: 0.8rem;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+        }
+        .legend-item { display: flex; align-items: center; margin-bottom: 8px; }
+        .legend-svg { width: 16px; height: 16px; margin-right: 10px; display: block; }
+
+        /* SVG Icon Fix */
+        .custom-div-icon { background: transparent; border: none; }
+        .custom-div-icon svg { width: 30px; height: 30px; display: block; overflow: visible; }
+    </style>
+</head>
+<body>
+
+    <div id="saetta-nav"></div>
+    <script src="nav.js?v=1.5.1"></script>
+
+    <main class="container dossier-layout">
+        <aside class="chapter-rail">
+            <div class="rail-header">// DATA REPORT</div>
+            <nav class="rail-nav">
+                <a href="#map-view" class="rail-link">01 // TARGET MAP</a>
+                <a href="#analysis" class="rail-link">02 // TACTICAL ANALYSIS</a>
+                <a href="#dataset" class="rail-link">03 // DATASET SPECS</a>
+            </nav>
+        </aside>
+
+        <div class="dossier-body">
+            <header class="page-header">
+                <h1>HEZBOLLAH TARGET SHEET</h1>
+                <p>STATUS: ACTIVE MONITORING</p>
+            </header>
+
+            <section id="map-view" class="text-block" style="border:none;">
+                <div id="intel-map">
+                    <div class="map-legend">
+                        <div style="font-weight:900; border-bottom:1px solid black; margin-bottom:10px;">// LEGEND</div>
+                        
+                        <div style="margin-bottom:10px; font-weight:bold;">TYPE:</div>
+                        <div class="legend-item"><svg class="legend-svg" viewBox="0 0 30 30"><polygon points="15,5 25,15 15,25 5,15" fill="#AA3333" stroke="black" stroke-width="2"/></svg> Commands</div>
+                        <div class="legend-item"><svg class="legend-svg" viewBox="0 0 30 30"><polygon points="5,5 25,5 15,25" fill="#AA3333" stroke="black" stroke-width="2"/></svg> Military</div>
+                        <div class="legend-item"><svg class="legend-svg" viewBox="0 0 30 30"><polygon points="15,5 5,25 25,25" fill="#AA3333" stroke="black" stroke-width="2"/></svg> Facilities</div>
+                        <div class="legend-item"><svg class="legend-svg" viewBox="0 0 30 30"><circle cx="15" cy="15" r="10" fill="#AA3333" stroke="black" stroke-width="2"/></svg> Personnel</div>
+                        <div class="legend-item"><svg class="legend-svg" viewBox="0 0 30 30"><rect x="5" y="5" width="20" height="20" fill="#AA3333" stroke="black" stroke-width="2"/></svg> Route</div>
+
+                        <div style="margin:10px 0; font-weight:bold; border-top:1px dashed #000; paddingTop:5px;">STATUS:</div>
+                        <div class="legend-item"><div style="background:#AA3333; width:12px; height:12px; margin-right:10px; border:1px solid black;"></div> Active</div>
+                        <div class="legend-item"><div style="background:#CC8800; width:12px; height:12px; margin-right:10px; border:1px solid black;"></div> Suspected</div>
+                        <div class="legend-item"><div style="background:#444; width:12px; height:12px; margin-right:10px; border:1px solid black;"></div> Inactive</div>
+                    </div>
+                </div>
+                <div style="font-size: 0.7rem; margin-top: 5px; opacity: 0.7; text-align: right;">
+                    // MAP DATA: OPENSTREETMAP | TILES: CARTODB DARK MATTER | SOURCE: HEZBOLLAH_TARGETSHEET_202601.GPKG
+                </div>
+            </section>
+
+            <section id="analysis" class="text-block">
+                <h3>02 // TACTICAL ASSESSMENT</h3>
+                <p><strong>Overview:</strong> Following the degradation of the South Litani defensive line in late 2025, Hezbollah has shifted its logistical center of gravity northwards to the Baalbek-Hermel axis. The map displays 43 confirmed and suspected nodes spanning the Middle East, West Africa, and South America.</p>
+                <p><strong>Key Findings:</strong></p>
+                <ul>
+                    <li><strong>Global Financial Network:</strong> Financial nodes in the Tri-Border Area and West Africa remain active. Higher traffic is expected following primary node disarmament.</li>
+                    <li><strong>Radwan Force Displacement:</strong> Former command nodes in Nabatieh and Jezzine have been abandoned. New command structures are suspected in the northern Bekaa Valley.</li>
+                    <li><strong>Unit 4400 Routes:</strong> The logistics network remains active across the Syrian border, utilizing illegal crossings near Al-Qusayr and tunnels near Hermel. This is expected to continue, at a lower rate, following disarmament.</li>
+                </ul>
+            </section>
+
+            <section id="dataset" class="text-block" style="border:none;">
+                <h3>03 // DATASET SPECIFICATIONS</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.9rem;">
+                    <div>
+                        <strong>CRS:</strong> WGS 84 (EPSG:4326)<br>
+                        <strong>Format:</strong> GeoJSON / GPKG
+                    </div>
+                    <div>
+                        <strong>Confidence:</strong> HIGH<br>
+                        <strong>Sources:</strong> Alma Research & Education Centre, OFAC Sanctions List, CSIS Missile Threat
+                    </div>
+                </div>
+                <br>
+                <a href="#" class="btn">[ DOWNLOAD GEOPACKAGE FILE ]</a>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // --- 1. INITIALIZE MAP (Center adjusted to show Middle East + Africa context) ---
+        const map = L.map('intel-map', {
+            center: [25.0, 15.0], // Zoomed out to show Africa & Middle East
+            zoom: 3,
+            zoomControl: true,
+            scrollWheelZoom: false 
+        });
+
+        // --- 2. LOAD TILES ---
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // --- 3. DATA IMPORT (Parsed from CSV) ---
+        const targets = [
+            { name: "Badr Unit HQ (North Litani)", type: "Command", status: "Active", lat: 33.45, lng: 35.55, notes: "New operational Center of Gravity following South Litani collapse. Coord approx." },
+            { name: "Unit 4400 Strategic Tunnel (Hermel)", type: "Logistics", status: "Active", lat: 34.42, lng: 36.45, notes: "3km tunnel linking Al-Qusayr (Syria) to Marah al-Zakba (Lebanon). Used for heavy arms transfer." },
+            { name: "Janta Precision Missile Plant", type: "Logistics", status: "Suspected", lat: 33.82, lng: 36.12, notes: "Underground assembly facility. Struck multiple times late 2025 but signs of reactivation." },
+            { name: "Shmustar Underground Depot", type: "Weapons", status: "Active", lat: 33.95, lng: 36.05, notes: "Deep storage for strategic missile systems (Fateh-110)." },
+            { name: "Radwan Camp (Jezzine)", type: "Military", status: "Inactive", lat: 33.5417, lng: 35.5833, notes: "Former elite training compound. Levelled by airstrikes Dec 2025." },
+            { name: "Kfar Anzar Concrete Plant", type: "Logistics", status: "Active", lat: 33.39, lng: 35.45, notes: "Al-Majabel production site. Supplies cement for tunnel reconstruction." },
+            { name: "Al-Masilah Outpost", type: "Military", status: "Suspected", lat: 33.51, lng: 35.35, notes: "Regrouping point for coastal defense units (Sidon Sector)." },
+            { name: "Ossama Jaber Exchange (Beirut)", type: "Financial", status: "Active", lat: 33.88, lng: 35.5, notes: "Key node for laundering IRGC funds into local currency." },
+            { name: "Concepto-Screen SAL", type: "Financial", status: "Active", lat: 33.893, lng: 35.483, notes: "Oil brokerage front company laundering Iranian crude revenue." },
+            { name: "Hokoul SAL Offshore", type: "Financial", status: "Active", lat: 33.889, lng: 35.495, notes: "Front company managed by Samer Kasbar for finance transfers." },
+            { name: "Galeria Page (Ciudad del Este)", type: "Financial", status: "Active", lat: -25.515, lng: -54.615, notes: "Central money laundering hub in Tri-Border Area (shopping center cover)." },
+            { name: "Maicao Trade Hub (Colombia)", type: "Financial", status: "Active", lat: 11.378, lng: -72.245, notes: "Illicit charcoal and narcotics revenue generation point." },
+            { name: "Naim Qassem Safehouse (Baabda)", type: "Personnel", status: "Active", lat: 33.833, lng: 35.533, notes: "Secretary General location. Likely hardened bunker in Dahieh outskirts." },
+            { name: "Talal Hamiyah (Unit 910)", type: "Personnel", status: "Suspected", lat: 34.0, lng: 36.2, notes: "Head of ESO. Moving between safe farms in Baalbek-Hermel." },
+            { name: "Haytham Ali Tabatabai Remnants", type: "Personnel", status: "Inactive", lat: 33.85, lng: 35.51, notes: "Former military commander. Network disrupted after Nov 2025 strike." },
+            { name: "Radwan HQ (Nabatieh)", type: "Command", status: "Inactive", lat: 33.3772, lng: 35.4833, notes: "Former command node struck Nov 2025. Underground structures collapsed." },
+            { name: "Jihad al-Bina Center (Baalbek)", type: "Logistics", status: "Active", lat: 34.0058, lng: 36.218, notes: "Reconstruction logistics hub. Repurposed for dual-use storage." },
+            { name: "Beit Lif Storage Complex", type: "Weapons", status: "Inactive", lat: 33.1611, lng: 35.3347, notes: "Munitions depot targeted late 2025. Hazardous debris present." },
+            { name: "Hermel Drone Assembly", type: "Logistics", status: "Suspected", lat: 34.3957, lng: 36.3885, notes: "Reports of underground reactivation near Syrian border." },
+            { name: "Kfar Kila Tunnel Shafts", type: "Routes", status: "Inactive", lat: 33.2917, lng: 35.5489, notes: "Extensive tunnel network exposed and cemented in 2025." },
+            { name: "Maroun el Ras Launch Sites", type: "Weapons", status: "Inactive", lat: 33.107, lng: 35.441, notes: "Former 'Iranian Garden' launch zones. Heavily cratered." },
+            { name: "Bekaa Valley Depot (North)", type: "Weapons", status: "Active", lat: 34.123, lng: 36.25, notes: "Deep storage bunkers. 2026 intel suggests restocking via Syria." },
+            { name: "Aita Ash-Shaab Outpost", type: "Military", status: "Inactive", lat: 33.1333, lng: 35.3417, notes: "Forward operating base levelled. Ruins used as OP." },
+            { name: "Litani Crossing Point 4", type: "Routes", status: "Active", lat: 33.34, lng: 35.25, notes: "Key logistical chokepoint for movement north/south of Litani." },
+            { name: "Dhayra Observation Post", type: "Military", status: "Inactive", lat: 33.109, lng: 35.19, notes: "Coastal monitoring post; equipment stripped." },
+            { name: "Al-Manar Relay (Srifa)", type: "Logistics", status: "Inactive", lat: 33.2833, lng: 35.3833, notes: "Broadcasting infrastructure neutralized." },
+            { name: "Tyre Logistics Warehouse", type: "Logistics", status: "Active", lat: 33.2708, lng: 35.196, notes: "Civilian cover used for supply distribution." },
+            { name: "Al-Qusayr Logistics Base", type: "Logistics", status: "Active", lat: 34.509, lng: 36.578, notes: "Primary cross-border transshipment hub for Unit 4400." },
+            { name: "Jdeidat Yabus Crossing", type: "Routes", status: "Active", lat: 33.655, lng: 35.941, notes: "Official crossing point used for dual-use tech transfer." },
+            { name: "Dimas Weapons Storage", type: "Weapons", status: "Suspected", lat: 33.593, lng: 36.136, notes: "Hardened depots west of Damascus. Previously struck but operational." },
+            { name: "Sayyida Zeinab Ops Center", type: "Command", status: "Active", lat: 33.447, lng: 36.338, notes: "IRGC liaison node and personnel transit point." },
+            { name: "Unit 4400 Finance Office", type: "Financial", status: "Active", lat: 33.875, lng: 35.515, notes: "Coordination center for oil smuggling revenue." },
+            { name: "Abidjan Trade Front", type: "Financial", status: "Active", lat: 5.36, lng: -4.0083, notes: "Commercial cover for West African revenue generation." },
+            { name: "Lagos Transit Warehouse", type: "Logistics", status: "Active", lat: 6.451, lng: 3.395, notes: "Suspected narcotics transshipment point for Europe." },
+            { name: "Freetown Diamond Brokerage", type: "Financial", status: "Active", lat: 8.465, lng: -13.231, notes: "Resource extraction financing node." },
+            { name: "Kano Support Cell", type: "Personnel", status: "Suspected", lat: 12.002, lng: 8.592, notes: "Local recruitment and radicalization support." },
+            { name: "Triple Frontier Hub (CDE)", type: "Financial", status: "Active", lat: -25.51, lng: -54.61, notes: "Ciudad del Este illicit finance center." },
+            { name: "Margarita Island Camp", type: "Military", status: "Active", lat: 10.995, lng: -63.921, notes: "Safe haven and training liaison with local actors." },
+            { name: "Sao Paulo Finance Cell", type: "Personnel", status: "Active", lat: -23.5505, lng: -46.633, notes: "Banking coordination node for South American ops." },
+            { name: "Foz do Iguacu Safehouse", type: "Personnel", status: "Active", lat: -25.5469, lng: -54.5882, notes: "Logistic support for operatives in Tri-Border Area." },
+            { name: "CTEX Exchange", type: "Financial", status: "Active", lat: 33.8886, lng: 35.4955, notes: "Central bank liaison node for currency stabilization." },
+            { name: "Al-Qard Al-Hassan (Dahieh)", type: "Financial", status: "Inactive", lat: 33.85, lng: 35.51, notes: "Former central vault. Ruins used for local distribution." },
+            { name: "Unit 4400 Oil HQ (Hermel)", type: "Financial", status: "Active", lat: 34.433, lng: 36.35, notes: "Center managing illicit fuel transport revenues." }
+        ];
+
+        targets.forEach(t => {
+            let color = "#444"; 
+            if(t.status === "Active") color = "#AA3333";
+            if(t.status === "Suspected") color = "#CC8800";
+
+            let svg = '';
+            // Icons based on Type
+            if(t.type === "Command") {
+                // Diamond
+                svg = `<polygon points="15,5 25,15 15,25 5,15" fill="${color}" stroke="black" stroke-width="2"/>`;
+            } else if (t.type === "Military") {
+                // Inverted Triangle
+                svg = `<polygon points="5,5 25,5 15,25" fill="${color}" stroke="black" stroke-width="2"/>`;
+            } else if (t.type === "Logistics" || t.type === "Weapons" || t.type === "Financial") {
+                // Triangle
+                svg = `<polygon points="15,5 5,25 25,25" fill="${color}" stroke="black" stroke-width="2"/>`;
+            } else if (t.type === "Personnel") {
+                // Circle
+                svg = `<circle cx="15" cy="15" r="10" fill="${color}" stroke="black" stroke-width="2"/>`;
+            } else {
+                // Square (Routes)
+                svg = `<rect x="5" y="5" width="20" height="20" fill="${color}" stroke="black" stroke-width="2"/>`;
+            }
+
+            const icon = L.divIcon({
+                className: 'custom-div-icon',
+                html: `<svg width="30" height="30" viewBox="0 0 30 30">${svg}</svg>`,
+                iconSize: [30, 30],
+                iconAnchor: [15, 15],
+                popupAnchor: [0, -15]
+            });
+
+            L.marker([t.lat, t.lng], {icon: icon})
+             .addTo(map)
+             .bindPopup(`
+                <div class="pop-title">${t.name}</div>
+                <div class="pop-meta">${t.type.toUpperCase()} | ${t.status.toUpperCase()}</div>
+                <div>${t.notes}</div>
+             `);
+        });
+    </script>
+</body>
+</html>
