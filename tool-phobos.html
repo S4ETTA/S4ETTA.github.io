@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S7 PHOBOS // SAETTA</title>
-    <link rel="stylesheet" href="style.css?v=1.5.0">
+    <link rel="stylesheet" href="style.css?v=1.6.0">
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
         </script>
@@ -23,7 +23,7 @@
                 <a href="#ingestion" class="rail-link">02 // DATA INGESTION</a>
                 <a href="#extraction" class="rail-link">03 // DATA PROJECTION</a>
                 <a href="#matrix" class="rail-link">04 // THREAT MATRIX</a>
-                <a href="#roadmap" class="rail-link">05 // PROJECTION</a>
+                <a href="#roadmap" class="rail-link">05 // PREDICTION</a>
             </nav>
         </aside>
 
@@ -36,11 +36,12 @@
             <div class="carousel-container">
                 <div class="carousel-slide" style="display:block;"><img src="assets/phobos_terminal.png"
                         alt="Phobos Terminal UI"></div>
-                <div class="carousel-slide"><img src="assets/phobos_nodegraph.png" alt="Network Graph Visualization">
-                </div>
-                <div class="carousel-slide"><img src="assets/phobos_evp.png" alt="Event Variance Projection">
+                <div class="carousel-slide"><video src="assets/phobos_nodegraph.mp4" autoplay muted loop
+                        playsinline></video>
                 </div>
                 <div class="carousel-slide"><img src="assets/phobos_overwatch.png" alt="Contingency Overwatch">
+                </div>
+                <div class="carousel-slide"><img src="assets/phobos_threatmatrix.png" alt="Contingency Overwatch">
                 </div>
 
                 <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
@@ -71,8 +72,11 @@
                     <p>Core intelligence is powered by a 27B Parameter Instruction-Tuned Model (Gemma 3). The extraction
                         process uses a <strong>hybrid parsing engine</strong>: a primary layer enforces strict JSON
                         schema for event scoring, while a secondary Regex safety net recovers data if the model produces
-                        unstructured text. Data is visualized via NetworkX as a gravity-based graph where events "orbit"
-                        central Crisis Nodes. Duplicate and reposted events are filtered out using Levenshtein distance
+                        unstructured text. Data is visualized via NetworkX as a multi-layer planetary graph, each layer
+                        representing a specific data type. This structure ensures the graph is not just a cluster of
+                        nodes, but an observable data source. Layer 1 projects countries, Layer 2 projects contingencies
+                        and live data (NOTAM, USGS, FR24, Travel Advisories), Layer 3 projects event nodes, and Layer 4
+                        projects OSINT nodes. Duplicate and reposted events are filtered out using Levenshtein distance
                         and crisis node connections in order to maintain accuracy in threat assessment.</p>
                 </section>
 
@@ -110,8 +114,13 @@
                 </section>
 
                 <section id="evp" class="text-block">
-                    <h3>05 // EVENT VARIANCE PROJECTION</h3>
-                    <p>The Event Variance Projection Model (EVP) utilises a sophisticated prediction algorithm to read and project future scenario escalation. The algorithm takes into account global trends, historical contexts, and geopolitical overlaps with significant regional actors in order to pinpoint when and how an ongoing crisis might evolve. Such variables include elections, holidays, major asset movements, seasonal disasters and political trends. Each event is calculated using historical references in conjunction with escalatory variables.</p>
+                    <h3>05 // TEMPORAL RECURSION MODEL </h3>
+                    <p>The Temporal Recursion Model (TRM) utilises a sophisticated prediction algorithm to read and
+                        project future scenario escalation. The algorithm uses an onboard database to find historical
+                        patterns on a developing scenario and sequentialises the pattern into a "shadow event", which is
+                        then matched with the current event to determine the probability of future escalation. The TRM
+                        allows the user to observe ongoing events in real-time and react or adjust accordingly. TRM is
+                        currently under training and testing. </p>
                 </section>
             </article>
 
@@ -136,7 +145,7 @@
             slides[slideIndex - 1].style.display = "block";
         }
     </script>
-    <script src="nav.js?v=1.5.0"></script>
+    <script src="nav.js?v=1.6.0"></script>
 </body>
 
 </html>

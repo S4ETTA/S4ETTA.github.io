@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WARNINGSTAR // SAETTA</title>
-    <link rel="stylesheet" href="style.css?v=1.5.0">
+    <link rel="stylesheet" href="style.css?v=1.6.0">
 </head>
+
 <body>
 
     <div id="saetta-nav"></div>
@@ -29,16 +31,18 @@
 
             <div class="carousel-container">
                 <div class="carousel-slide" style="display:block;">
-                    <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#111; color:#333; font-weight:bold;">
+                    <div
+                        style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#111; color:#333; font-weight:bold;">
                         [ UI_OVERVIEW_LIVE_FEED ]
                     </div>
                 </div>
                 <div class="carousel-slide">
-                    <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#111; color:#333; font-weight:bold;">
+                    <div
+                        style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#111; color:#333; font-weight:bold;">
                         [ DATA_STREAM_LOGS ]
                     </div>
                 </div>
-                
+
                 <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
                 <button class="carousel-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
             </div>
@@ -46,39 +50,57 @@
             <article class="content-stream">
                 <section id="overview" class="text-block">
                     <h3>01 // SYSTEM OVERVIEW</h3>
-                    <p>WARNINGSTAR is a Discord-bound international security data aggregator. It serves as a news aggregator for discord servers, providing real-time updates on global security issues, and drafting region-based intelligence briefings every week. The system is built on a Python backend integrating specifically with the Discord.py library. It utilises the Discord messaging app as frontend, taking advantage of both its well-designed UI and channel structures, as well as the built-in backend security.</p>
+                    <p>WARNINGSTAR is a Discord-bound international security data aggregator. It serves as a news
+                        aggregator for discord servers, providing real-time updates on global security issues, and
+                        drafting region-based intelligence briefings every week. The system is built on a Python backend
+                        integrating specifically with the Discord.py library. It utilises the Discord messaging app as
+                        frontend, taking advantage of both its well-designed UI and channel structures, as well as the
+                        built-in backend security.</p>
                 </section>
 
                 <section id="aggregator" class="text-block">
                     <h3>02 // DATA AGGREGATION (Channel Required: #warningstar-feed)</h3>
-                    <p><strong>Data Aggregation:</strong> WARNINGSTAR autonomously wakes up every 2 hours through Github Actions and collects the newest data from specified and customisable news sources.</p>
-                    <p><strong>Data Filtering:</strong> Once collected, the system internally filters through and only maintains articles relevant to the current operational context, through a combination of customisable keyword focuses.</p>
-                    <p><strong>Data Display:</strong> Filtered data is displayed in a dedicated Discord channel in the form of an easy-to-read embed summary, and the source url. Each displayed article is saved in an internal database to prevent duplication, and to be used by the AI for weekly briefing.</p>                
+                    <p><strong>Data Aggregation:</strong> WARNINGSTAR autonomously wakes up every 2 hours through Github
+                        Actions and collects the newest data from specified and customisable news sources.</p>
+                    <p><strong>Data Filtering:</strong> Once collected, the system internally filters through and only
+                        maintains articles relevant to the current operational context, through a combination of
+                        customisable keyword focuses.</p>
+                    <p><strong>Data Display:</strong> Filtered data is displayed in a dedicated Discord channel in the
+                        form of an easy-to-read embed summary, and the source url. Each displayed article is saved in an
+                        internal database to prevent duplication, and to be used by the AI for weekly briefing.</p>
                 </section>
 
                 <section id="briefing" class="text-block">
                     <h3>03 // WEEKLY BRIEFING (Channel Required: #warningstar-brief)</h3>
-                    <p>Every Monday at 00:00 UTC, WARNINGSTAR generates a comprehensive weekly intelligence briefing of the past week, summarised and organised by an onboard AI. Each summary is sorted by their respective regions (Americas, US Politics, Europe, MENA, Indopacific)</p>
+                    <p>Every Monday at 00:00 UTC, WARNINGSTAR generates a comprehensive weekly intelligence briefing of
+                        the past week, summarised and organised by an onboard AI. Each summary is sorted by their
+                        respective regions (Americas, US Politics, Europe, MENA, Indopacific)</p>
                 </section>
 
                 <section id="deployment" class="text-block">
                     <h3>04 // Deployment</h3>
-                    <p>WARNINSTAR is complete and ready for deployment. Click the link below to invite it into a server of your choice. All required permissions are listed in the authorization link. Once invited, the system does not require any manual tuning nor modification. All tasks are automated. Make sure that the server has the required channels:
+                    <p>WARNINSTAR is complete and ready for deployment. Click the link below to invite it into a server
+                        of your choice. All required permissions are listed in the authorization link. Once invited, the
+                        system does not require any manual tuning nor modification. All tasks are automated. Make sure
+                        that the server has the required channels:
                     </p>
                     <p><strong>#warningstar-feed</strong></p>
                     <p><strong>#warningstar-brief</strong></p>
-                    <p>Note: If you do not wish to use the briefing feature, you can simply delete the #warningstar-brief channel. It will not affect the core functionality of the system.</p>
+                    <p>Note: If you do not wish to use the briefing feature, you can simply delete the
+                        #warningstar-brief channel. It will not affect the core functionality of the system.</p>
                     <br>
-                    <a href="https://discord.com/oauth2/authorize?client_id=1420757957477535944&permissions=183296&integration_type=0&scope=bot" 
-                       class="btn" style="background: var(--accent-red); color: white; border-color: var(--accent-red); width: 100%; text-align: center;">
-                       AUTHORIZE CONNECTION
+                    <a href="https://discord.com/oauth2/authorize?client_id=1420757957477535944&permissions=183296&integration_type=0&scope=bot"
+                        class="btn"
+                        style="background: var(--accent-red); color: white; border-color: var(--accent-red); width: 100%; text-align: center;">
+                        AUTHORIZE CONNECTION
                     </a>
                 </section>
             </article>
 
             <footer class="tool-footer">
                 <div class="footer-btns">
-                    <a href="tools.html" class="btn"><< BACK TO DATABASE</a>
+                    <a href="tools.html" class="btn">
+                        << BACK TO DATABASE</a>
                 </div>
             </footer>
         </div>
@@ -89,12 +111,13 @@
         function changeSlide(n) { showSlides(slideIndex += n); }
         function showSlides(n) {
             let slides = document.getElementsByClassName("carousel-slide");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
             for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-            slides[slideIndex-1].style.display = "block";  
+            slides[slideIndex - 1].style.display = "block";
         }
     </script>
-    <script src="nav.js?v=1.5.0"></script>
+    <script src="nav.js?v=1.6.0"></script>
 </body>
+
 </html>
