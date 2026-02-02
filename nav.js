@@ -1,10 +1,10 @@
 /* --- SAETTA NAVIGATION COMPONENT V6.1 --- */
-const SAETTA_VERSION = "1.5.0"; 
+const SAETTA_VERSION = "1.5.0";
 
 const navHTML = `
     <div class="top-bar">
         <div class="identity-block">
-            <img src="assets/logo.png" alt="Logo" class="logo-img">
+            <img src="assets/logo.jpg" alt="Logo" class="logo-img">
             <div class="identity">
                 <h1>Charles (Min Ha) Kim</h1>
                 <div class="saetta-title">INTELLIGENCE ANALYST</div>
