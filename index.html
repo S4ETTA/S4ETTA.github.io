@@ -5,35 +5,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAETTA | BIO</title>
-    <link rel="stylesheet" href="style.css?v=1.6.0">
+    <link rel="stylesheet" href="style.css?v=1.60">
 </head>
 
 <body>
     <div id="saetta-nav"></div>
-    <script src="nav.js?v=1.6.0"></script>
+    <script src="nav.js?v=1.60"></script>
 
     <main class="container">
         <div class="bio-layout">
-            <div class="photo-frame">
+            <div style="width:100%; margin-top: 30px;">
                 <img src="assets/me2.jpg" alt="ID_PHOTO" style="width:100%; filter: grayscale(0%) contrast(110%);">
-                <div
-                    style="border-top:2px solid var(--ink-color); padding:8px; font-size:0.7rem; display:flex; justify-content:space-between;">
-                </div>
             </div>
 
             <div class="bio-content">
                 <h1>// ABOUT ME</h1>
-                <p>I am an intelligence analyst based in Seoul, Republic of Korea, specialising in non-state actors,
-                    unconventional warfare, and precision guided munitions. I am currently pursuing a Master's degree in
-                    International Security and aiming for a career in protective threat analysis and counter-terrorism.
-                    You can contact me via email for business inquiries or collaboration.</p>
-
-                <h2 style="margin-top: 40px;">WORKS</h2>
-                <p>My Works involve OSINT projects around tracking non-state actors and their logistics networks,
-                    designing early-warning systems and data analysis platforms, as well as authoring research papers on
-                    various topics. All of my works are open-source and can be found on this website.
+                <p>Intelligence analyst based in Seoul, Republic of Korea, specialising in non-state actors,
+                    irregular warfare, and precision guided munitions. Currently pursuing a Master's degree in
+                    International Cooperation, and leading the local International Security Roundtable. Works involve
+                    OSINT projects around tracking and reporting hostile non-state actors and their logistics network
+                    and designing analytical tools. All works are open-source and can be found on this website. Open to
+                    both remote and in-person positions, and open to relocation.
                 </p>
+
+                <div
+                    style="margin-bottom: 40px; border-top: 1px solid var(--ink-color); border-bottom: 1px solid var(--ink-color); padding: 15px 0;">
+                    <strong>// KEY SKILLS</strong>
+                    <ul style="margin-top: 10px; list-style: none; padding-left: 0; line-height: 1.6; opacity: 0.8;">
+                        <li>:: Assets: OSINT(Google Dorks, Social Media, Custom Tools), GEOINT (QGIS, Copernicus, SRTM,
+                            USGS, FIRMS, Cesium), HUMINT </li>
+                        <li>:: Languages: English (native), Korean (native), Italian (intermediate), French (basic)</li>
+                        <li>:: Service Experience: Combined Forces Command, United States Forces Korea, United Nations
+                            Command</li>
+                    </ul>
+                </div>
             </div>
+        </div>
+
+        <div class="bio-footer-panel"
+            style="width:100%; background:var(--ink-color); color:var(--bg-color); border-top:4px solid #000; margin-top:50px; padding: 40px 60px;">
+
+            <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px;">
+                <!-- Contact Info -->
+                <div>
+                    <h3
+                        style="color:var(--bg-color); text-transform:uppercase; border-bottom:1px solid var(--bg-color); padding-bottom:10px; margin-top:0; font-size: 1.1rem;">
+                        Contact Info</h3>
+                    <p style="opacity:0.8; font-size:0.9rem; margin-bottom:5px;"><strong>Email:</strong>
+                        <a href="mailto:charleskimisr@gmail.com"
+                            style="color:var(--bg-color); text-decoration:underline;">charleskimisr@gmail.com</a>
+                    </p>
+                    <p style="opacity:0.8; font-size:0.9rem;"><strong>Location:</strong> Seoul, Republic of Korea</p>
+                </div>
+
+                <!-- Updates -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div>
+                        <h3
+                            style="color:var(--bg-color); margin-top:0; border-bottom:1px solid var(--bg-color); padding-bottom:10px; font-size: 1.1rem; text-transform:uppercase;">
+                            TOOL UPDATES</h3>
+                        <ul style="list-style:none; padding:0; font-size:0.8rem; line-height:1.6; opacity:0.8;">
+                            <li><a href="tool-phobos.html" style="color:var(--bg-color);">S7: TRM testing underway</a>
+                            </li>
+                            <li><a href="tool-warningstar.html" style="color:var(--bg-color);">S2A: Weekly briefing
+                                    streamlined</a>
+                            </li>
+                            <li><a href="tool-strikemaster.html" style="color:var(--bg-color);">S9: Geopackage/csv file
+                                    integration</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3
+                            style="color:var(--bg-color); margin-top:0; border-bottom:1px solid var(--bg-color); padding-bottom:10px; font-size: 1.1rem; text-transform:uppercase;">
+                            LATEST PAPERS</h3>
+                        <ul style="list-style:none; padding:0; font-size:0.8rem; line-height:1.6; opacity:0.8;">
+                            <li><a href="#" style="color:var(--bg-color);">Post-2026 MBT Strategy</a></li>
+                            <li><a href="#" style="color:var(--bg-color);">The Tomahawk Effect</a></li>
+                            <li><a href="#" style="color:var(--bg-color);">Sanctions Failure in MENA</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 </body>

@@ -1,14 +1,14 @@
 /* --- SAETTA NAVIGATION COMPONENT V6.1 --- */
-const SAETTA_VERSION = "1.5.0";
+const SAETTA_VERSION = "1.60";
 
 const navHTML = `
     <div class="top-bar">
         <div class="identity-block">
-            <img src="assets/logo.jpg" alt="Logo" class="logo-img">
-            <div class="identity">
-                <h1>Charles (Min Ha) Kim</h1>
-                <div class="saetta-title">INTELLIGENCE ANALYST</div>
-            </div>
+            <a href="index.html?v=${SAETTA_VERSION}" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <div class="identity" style="margin-left:0;">
+                    <h1 style="font-size: 2.5rem; font-weight: bold; letter-spacing: -1px;">Charles Kim</h1>
+                </div>
+            </a>
         </div>
         <div class="nav-group">
             <nav>
@@ -18,9 +18,7 @@ const navHTML = `
                 <a href="videos.html?v=${SAETTA_VERSION}">Videos</a>
             </nav>
             <div class="socials">
-                <a href="https://x.com/S4ETTA" target="_blank"><img src="assets/x.png" class="social-icon" alt="X"></a>
-                <a href="https://youtube.com/@S4ETTA" target="_blank"><img src="assets/yt.png" class="social-icon" alt="YT"></a>
-                <a href="mailto:charleskimisr@gmail.com"><img src="assets/email.png" class="social-icon" alt="Email"></a>
+                <!-- Socials removed as requested -->
             </div>
         </div>
     </div>
