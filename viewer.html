@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAETTA | DOCUMENT VIEWER</title>
+    <link rel="stylesheet" href="style.css?v=1.60">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #viewer-container {
+            flex-grow: 1;
+            border: none;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #pdf-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: var(--ink-color);
+            color: var(--bg-color);
+            padding: 10px 15px;
+            font-weight: bold;
+            text-decoration: none;
+            border: 1px solid var(--bg-color);
+        }
+
+        .error-msg {
+            color: #fff;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="reports.html" class="back-btn">
+        << RETURN TO REPORTS</a>
+            <div id="saetta-nav" style="display:none;"></div> <!-- Hidden nav for consistent style import -->
+
+            <main id="viewer-container">
+                <!-- Content injected via JS -->
+            </main>
+
+            <script src="db.js?v=1.60"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const params = new URLSearchParams(window.location.search);
+                    const docId = params.get('id'); // This is actually the Title passed from loader.js
+
+                    if (!docId) {
+                        showError("No document specified.");
+                        return;
+                    }
+
+                    // correct look up logic
+                    // db.dataReports might need checking, also check papers if needed?
+                    // loader.js only links reports to this viewer for now.
+
+                    const report = db.dataReports.find(r => r.title === docId);
+
+                    if (!report) {
+                        showError(`Document not found: ${docId}`);
+                        return;
+                    }
+
+                    document.title = `VIEWER | ${report.title.toUpperCase()}`;
+
+                    const fileUrl = report.pdf || report.link;
+                    const container = document.getElementById('viewer-container');
+
+                    if (fileUrl.toLowerCase().endsWith('.pdf')) {
+                        // Native PDF Embed
+                        container.innerHTML = `<embed id="pdf-frame" src="${fileUrl}" type="application/pdf">`;
+                    } else if (fileUrl.toLowerCase().endsWith('.docx') || fileUrl.toLowerCase().endsWith('.doc')) {
+                        // Google Docs Viewer for Office files
+                        const encodedUrl = encodeURIComponent(window.location.origin + window.location.pathname.replace('viewer.html', '') + fileUrl);
+                        // Note: Google Docs Viewer requires PUBLIC URL. If localhost, this fails.
+                        // Fallback to strict "download" logic if fails? 
+                        // We will try Google Docs viewer but show a download button backup.
+                        // Actually, for local dev, Google viewer won't work.
+                        // Let's just provide a sophisticated "File Access" card for non-PDFs if viewer fails.
+
+                        // Since we can't guarantee public IP, we'll suggest download.
+                        // BUT user asked for "pdf reader logic" for it. 
+                        // I'll show a message explaining it's a DOCX.
+
+                        container.innerHTML = `
+                    <div class="error-msg">
+                        <h2>${report.title}</h2>
+                        <p>This document is in .DOCX format and cannot be displayed in the browser PDF reader.</p>
+                        <a href="${fileUrl}" class="btn" style="background:var(--bg-color); color:var(--ink-color);">[ DOWNLOAD DOCUMENT ]</a>
+                    </div>
+                 `;
+                    } else {
+                        showError("Unsupported file format.");
+                    }
+                });
+
+                function showError(msg) {
+                    document.getElementById('viewer-container').innerHTML = `<div class="error-msg">${msg}</div>`;
+                }
+            </script>
+</body>
+
+</html>

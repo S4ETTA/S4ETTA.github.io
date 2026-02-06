@@ -13,7 +13,7 @@ function loadTools() {
                 <div class="sys-content">
                     <h3 class="sys-title">${item.title}</h3>
                     <p class="sys-desc">${item.desc}</p>
-                    <a href="${item.link}" class="btn">ACCESS >></a>
+                    <a href="${item.link}" class="btn">ACCESS</a>
                 </div>
             </div>
         `;
@@ -35,13 +35,17 @@ function loadPapers() {
 function renderReportGrid(dataArray, targetElement) {
     let html = '';
     dataArray.forEach(item => {
+        const isLinkInvalid = !item.link || item.link === '#' || item.link === '';
+        const btnClass = isLinkInvalid ? 'btn disabled' : 'btn';
+        const hrefAttr = isLinkInvalid ? '' : `href="${item.link}"`;
+
         html += `
             <div class="report-card">
                 <div class="sys-content">
                     <div style="font-size:0.7rem; opacity:0.6; margin-bottom:5px;">ID: ${item.id}</div>
                     <h3 class="sys-title">${item.title}</h3>
                     <p class="sys-desc">${item.desc}</p>
-                    <a href="${item.link}" target="_blank" class="btn">[ ACCESS ]</a>
+                    <a ${hrefAttr} target="_blank" class="${btnClass}">ACCESS</a>
                 </div>
             </div>
         `;
@@ -49,19 +53,58 @@ function renderReportGrid(dataArray, targetElement) {
     targetElement.innerHTML = html;
 }
 
-function loadVideos() {
-    const container = document.getElementById('video-grid');
+function loadReports() {
+    const container = document.getElementById('report-grid');
     if (!container) return;
     let html = '';
-    db.videos.forEach(item => {
+    // Use dataReports or fallback to empty
+    const reports = db.dataReports || [];
+    reports.forEach(item => {
+        let finalLink = item.link;
+        if (item.type === 'local') {
+            finalLink = `viewer.html?id=${encodeURIComponent(item.title)}`;
+            // We'll map title to file in viewer or pass file path?
+            // Simpler: Pass the file path in ID or look it up in DB. 
+            // `viewer.html` needs to know the PDF path.
+            // Let's pass the ID we set in DB? 
+            // In DB I didn't set a unique machine ID, I used "id" for category (Terrorism).
+            // I should probably use the array index or a new unique slug.
+            // For now, I'll pass the array index or title.
+            // Let's update viewer.html to assume it gets a `file` param or look up by title? 
+            // The plan said "Look up metadata in db.js".
+            // So I'll pass `id` parameter as the title or a slug.
+            // Let's generate a slug from title.
+        }
+
+        // Image handling
+        let imageBlock = '';
+        if (item.thumb) {
+            imageBlock = `<div style="width:100%; height:160px; overflow:hidden; border-bottom:2px solid var(--ink-color);">
+                            <img src="${item.thumb}" style="width:100%; height:100%; object-fit:cover;">
+                          </div>`;
+        } else {
+            imageBlock = `<div style="width:100%; height:160px; background:var(--ink-color); display:flex; align-items:center; justify-content:center; border-bottom:2px solid var(--ink-color);">
+                             <h1 style="color:var(--bg-color); font-size:3rem; margin:0;">REF</h1>
+                        </div>`;
+        }
+
+        let isLinkInvalid = !item.link || item.link === '#' || item.link === '';
+        // If type is local, we constructed finalLink, but if item.link was originally empty/missing, we might consider it disabled unless we have a specific file logic
+        // But for local reports, we usually have a file.
+        // Let's rely on finalLink being valid.
+        if (item.type === 'local' && item.link) isLinkInvalid = false; // Override if local logic used
+
+        const btnClass = isLinkInvalid ? 'btn disabled' : 'btn';
+        const hrefAttr = isLinkInvalid ? '' : `href="${finalLink}"`;
+
         html += `
             <div class="system-card">
-                <div style="position:relative; width:100%; padding-bottom:56.25%; background:#000; border-bottom:1px solid var(--ink-color);">
-                    <iframe src="https://www.youtube.com/embed/${item.youtubeID}" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
-                </div>
+                ${imageBlock}
                 <div class="sys-content">
+                    <div style="font-size:0.7rem; opacity:0.6; margin-bottom:5px;">ID: ${item.id}</div>
                     <h3 class="sys-title">${item.title}</h3>
                     <p class="sys-desc">${item.desc}</p>
+                    <a ${hrefAttr} class="${btnClass}" ${item.type === 'external' ? 'target="_blank"' : ''}>ACCESS</a>
                 </div>
             </div>
         `;
@@ -72,5 +115,5 @@ function loadVideos() {
 document.addEventListener('DOMContentLoaded', () => {
     loadTools();
     loadPapers();
-    loadVideos();
+    loadReports();
 });

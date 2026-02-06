@@ -24,7 +24,7 @@ const db = {
         {
             title: "Failure of Economic Sanctions against MENA Hybrid Actors",
             desc: "Research into modernisation efforts and sanction evasion techniques by Hezbollah and the Houthis (Ansar-Allah).",
-            link: "papers/CharlesKim_Parasitic Resilience_v2.pdf",
+            link: "https://smallwarsjournal.com/2026/02/05/failure-economic-statecraft/",
             id: "Economic Statecraft, Terrorism"
         },
         {
@@ -34,19 +34,23 @@ const db = {
             id: "Weapons Systems, Terrorism"
         }
     ],
-    videos: [
-        {
-            title: "Post-2026 MBT Market Strategy",
-            desc: "Strategic analysis of the Main Battle Tank market post-2026.",
-            youtubeID: ""
-        }
-    ],
+    // Videos removed
     dataReports: [
         {
-            title: "Hezbollah Target Sheet",
+            title: "Hezbollah Target Sheet (JAN 2026)",
             desc: "Comprehensive visual database of known Hezbollah facilities and assets",
             link: "report-hezbollah.html",
-            id: "Terrorism"
+            thumb: "assets/hezbollah.png",
+            id: "Terrorism",
+            type: "html" // Direct HTML page
+        },
+        {
+            title: "BLA Attack Analysis (FEB 2026)",
+            desc: "Breakdown of the coordinated BLA attack and the ensuing Pakistani state counteroffensives.",
+            link: "reports/COIN Operations Following Operation Herof 2.pdf",
+            thumb: "assets/bla.png",
+            id: "Insurgency",
+            type: "local"
         }
     ]
 };

@@ -15,7 +15,7 @@ const navHTML = `
                 <a href="index.html?v=${SAETTA_VERSION}">Bio</a>
                 <a href="tools.html?v=${SAETTA_VERSION}">Tools</a>
                 <a href="papers.html?v=${SAETTA_VERSION}">Papers</a>
-                <a href="videos.html?v=${SAETTA_VERSION}">Videos</a>
+                <a href="reports.html?v=${SAETTA_VERSION}">Reports</a>
             </nav>
             <div class="socials">
                 <!-- Socials removed as requested -->
