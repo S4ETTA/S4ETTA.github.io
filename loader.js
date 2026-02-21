@@ -7,8 +7,8 @@ function loadTools() {
     db.tools.forEach(item => {
         html += `
             <div class="system-card">
-                <div style="width:100%; height:160px; overflow:hidden; border-bottom:2px solid var(--ink-color);">
-                    <img src="${item.thumb}" style="width:100%; height:100%; object-fit:cover;">
+                <div class="card-img-container">
+                    <img src="${item.thumb}">
                 </div>
                 <div class="sys-content">
                     <h3 class="sys-title">${item.title}</h3>
@@ -42,8 +42,9 @@ function renderReportGrid(dataArray, targetElement) {
         html += `
             <div class="report-card">
                 <div class="sys-content">
-                    <div style="font-size:0.7rem; opacity:0.6; margin-bottom:5px;">ID: ${item.id}</div>
+                    <div class="sys-id-tag">ID: ${item.id}</div>
                     <h3 class="sys-title">${item.title}</h3>
+                    ${item.date ? `<div class="sys-date-tag">${item.date}</div>` : ''}
                     <p class="sys-desc">${item.desc}</p>
                     <a ${hrefAttr} target="_blank" class="${btnClass}">ACCESS</a>
                 </div>
@@ -79,12 +80,12 @@ function loadReports() {
         // Image handling
         let imageBlock = '';
         if (item.thumb) {
-            imageBlock = `<div style="width:100%; height:160px; overflow:hidden; border-bottom:2px solid var(--ink-color);">
-                            <img src="${item.thumb}" style="width:100%; height:100%; object-fit:cover;">
+            imageBlock = `<div class="card-img-container">
+                            <img src="${item.thumb}">
                           </div>`;
         } else {
-            imageBlock = `<div style="width:100%; height:160px; background:var(--ink-color); display:flex; align-items:center; justify-content:center; border-bottom:2px solid var(--ink-color);">
-                             <h1 style="color:var(--bg-color); font-size:3rem; margin:0;">REF</h1>
+            imageBlock = `<div class="card-img-fallback">
+                             <h1>REF</h1>
                         </div>`;
         }
 
@@ -101,8 +102,9 @@ function loadReports() {
             <div class="system-card">
                 ${imageBlock}
                 <div class="sys-content">
-                    <div style="font-size:0.7rem; opacity:0.6; margin-bottom:5px;">ID: ${item.id}</div>
+                    <div class="sys-id-tag">ID: ${item.id}</div>
                     <h3 class="sys-title">${item.title}</h3>
+                    ${item.date ? `<div class="sys-date-tag">${item.date}</div>` : ''}
                     <p class="sys-desc">${item.desc}</p>
                     <a ${hrefAttr} class="${btnClass}" ${item.type === 'external' ? 'target="_blank"' : ''}>ACCESS</a>
                 </div>

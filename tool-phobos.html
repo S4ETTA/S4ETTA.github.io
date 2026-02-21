@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S7 PHOBOS // SAETTA</title>
+    <title>S7 PHOBOS SAETTA</title>
     <link rel="stylesheet" href="style.css?v=1.60">
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -17,20 +17,20 @@
 
     <main class="container dossier-layout">
         <aside class="chapter-rail">
-            <div class="rail-header">// CHAPTERS</div>
+            <div class="rail-header">CHAPTERS</div>
             <nav class="rail-nav">
-                <a href="#overview" class="rail-link">01 // OVERVIEW</a>
-                <a href="#ingestion" class="rail-link">02 // DATA INGESTION</a>
-                <a href="#extraction" class="rail-link">03 // DATA PROJECTION</a>
-                <a href="#matrix" class="rail-link">04 // THREAT MATRIX</a>
-                <a href="#roadmap" class="rail-link">05 // PREDICTION</a>
+                <a href="#overview" class="rail-link">01 OVERVIEW</a>
+                <a href="#ingestion" class="rail-link">02 DATA INGESTION</a>
+                <a href="#extraction" class="rail-link">03 DATA PROJECTION</a>
+                <a href="#matrix" class="rail-link">04 THREAT MATRIX</a>
+                <a href="#roadmap" class="rail-link">05 PREDICTION</a>
             </nav>
         </aside>
 
         <div class="dossier-body">
             <header class="page-header">
                 <h1>S7</h1>
-                <p>// GLOBAL EARLY WARNING AND THREAT ASSESSMENT PLATFORM</p>
+                <p>GLOBAL EARLY WARNING AND THREAT ASSESSMENT PLATFORM</p>
             </header>
 
             <div class="carousel-container">
@@ -50,7 +50,7 @@
 
             <article class="content-stream">
                 <section id="overview" class="text-block">
-                    <h3>01 // SYSTEM OVERVIEW</h3>
+                    <h3>01 SYSTEM OVERVIEW</h3>
                     <p>PHOBOS is a Dockerized, full-stack intelligence dashboard designed to autonomously ingest,
                         normalize, and visualize geopolitical threats in real-time. Unlike traditional news aggregators
                         that simply list headlines, PHOBOS employs a custom graph theory architecture to map
@@ -59,7 +59,7 @@
                 </section>
 
                 <section id="ingestion" class="text-block">
-                    <h3>02 // DATA INGESTION</h3>
+                    <h3>02 DATA INGESTION</h3>
                     <p>The system utilizes a <strong>multi-vector ingestion pipeline</strong> designed for high
                         availability. It features an automated feed handler triggered by GitHub Actions that pulls raw
                         JSON payloads from international news feeds. Simultaneously, it integrates a manual injection
@@ -68,7 +68,7 @@
                 </section>
 
                 <section id="extraction" class="text-block">
-                    <h3>03 // DATA PROJECTION</h3>
+                    <h3>03 DATA PROJECTION</h3>
                     <p>Core intelligence is powered by a 27B Parameter Instruction-Tuned Model (Gemma 3). The extraction
                         process uses a <strong>hybrid parsing engine</strong>: a primary layer enforces strict JSON
                         schema for event scoring, while a secondary Regex safety net recovers data if the model produces
@@ -81,27 +81,27 @@
                 </section>
 
                 <section id="matrix" class="text-block">
-                    <h3>04 // THREAT MATRIX</h3>
+                    <h3>04 THREAT MATRIX</h3>
                     <p>The Threat Matrix moves beyond qualitative description to a quantitative Weighted Threat Score
                         (WTS). The equation combines the historical accumulation of threat points ($S_{total}$) with a
                         "Recency Multiplier" and an "Intensity Weight":</p>
 
-                    <div style="font-size: 1.3rem; margin: 20px 0; color: var(--ink-color);">
+                    <div class="math-block">
                         \[
                         WTS = S_{total} + (S_{today} \times 2.0) + (S_{avg} \times 8.0)
                         \]
                     </div>
 
-                    <ul style="line-height: 1.6; margin-top: 20px;">
-                        <li style="margin-bottom: 10px;">
+                    <ul class="math-vars-list">
+                        <li>
                             <strong>\(S_{total}\) (Total Score):</strong> The historical accumulation of all threat
                             points (Stability).
                         </li>
-                        <li style="margin-bottom: 10px;">
+                        <li>
                             <strong>\(S_{today}\) (Recency Multiplier):</strong> Events happening <em>now</em> are
                             weighted double to alert analysts to immediate escalations.
                         </li>
-                        <li style="margin-bottom: 10px;">
+                        <li>
                             <strong>\(S_{avg}\) (Intensity Weight):</strong> The average severity of events. A country
                             with a few high-severity events (War) will rank higher than a country with many low-severity
                             events (Protests).
@@ -114,7 +114,7 @@
                 </section>
 
                 <section id="evp" class="text-block">
-                    <h3>05 // TEMPORAL RECURSION MODEL </h3>
+                    <h3>05 TEMPORAL RECURSION MODEL </h3>
                     <p>The Temporal Recursion Model (TRM) utilises a sophisticated prediction algorithm to read and
                         project future scenario escalation. The algorithm uses an onboard database to find historical
                         patterns on a developing scenario and sequentialises the pattern into a "shadow event", which is
@@ -128,7 +128,7 @@
                 <div class="footer-btns">
                     <a href="tools.html" class="btn">
                         << BACK TO DATABASE</a>
-                            <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed;">ACCESS SOON</a>
+                            <a href="#" class="btn disabled">ACCESS SOON</a>
                 </div>
             </footer>
         </div>

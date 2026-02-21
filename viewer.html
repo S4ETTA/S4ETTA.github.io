@@ -71,16 +71,16 @@
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     const params = new URLSearchParams(window.location.search);
-                    const docId = params.get('id'); // This is actually the Title passed from loader.js
+                    const docId = params.get('id'); This is actually the Title passed from loader.js
 
                     if (!docId) {
                         showError("No document specified.");
                         return;
                     }
 
-                    // correct look up logic
-                    // db.dataReports might need checking, also check papers if needed?
-                    // loader.js only links reports to this viewer for now.
+                    correct look up logic
+                    db.dataReports might need checking, also check papers if needed?
+                    loader.js only links reports to this viewer for now.
 
                     const report = db.dataReports.find(r => r.title === docId);
 
@@ -95,20 +95,20 @@
                     const container = document.getElementById('viewer-container');
 
                     if (fileUrl.toLowerCase().endsWith('.pdf')) {
-                        // Native PDF Embed
+                        Native PDF Embed
                         container.innerHTML = `<embed id="pdf-frame" src="${fileUrl}" type="application/pdf">`;
                     } else if (fileUrl.toLowerCase().endsWith('.docx') || fileUrl.toLowerCase().endsWith('.doc')) {
-                        // Google Docs Viewer for Office files
+                        Google Docs Viewer for Office files
                         const encodedUrl = encodeURIComponent(window.location.origin + window.location.pathname.replace('viewer.html', '') + fileUrl);
-                        // Note: Google Docs Viewer requires PUBLIC URL. If localhost, this fails.
-                        // Fallback to strict "download" logic if fails? 
-                        // We will try Google Docs viewer but show a download button backup.
-                        // Actually, for local dev, Google viewer won't work.
-                        // Let's just provide a sophisticated "File Access" card for non-PDFs if viewer fails.
+                        Note: Google Docs Viewer requires PUBLIC URL. If localhost, this fails.
+                        Fallback to strict "download" logic if fails? 
+                        We will try Google Docs viewer but show a download button backup.
+                        Actually, for local dev, Google viewer won't work.
+                        Let's just provide a sophisticated "File Access" card for non-PDFs if viewer fails.
 
-                        // Since we can't guarantee public IP, we'll suggest download.
-                        // BUT user asked for "pdf reader logic" for it. 
-                        // I'll show a message explaining it's a DOCX.
+                        Since we can't guarantee public IP, we'll suggest download.
+                        BUT user asked for "pdf reader logic" for it. 
+                        I'll show a message explaining it's a DOCX.
 
                         container.innerHTML = `
                     <div class="error-msg">
