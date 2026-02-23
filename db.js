@@ -2,21 +2,21 @@
 const db = {
     tools: [
         {
-            title: "S7",
+            title: "S7 PHOBOS",
             desc: "Ontology-based global early warning and threat assessment platform.",
-            thumb: "assets/phobos_logo2.png",
+            thumb: "assets/phobos_logo3.png",
             link: "tool-phobos.html"
         },
         {
-            title: "S2A",
+            title: "S2A WARNINGSTAR",
             desc: "Discord-bound data aggregator with customisable sources and keyword triggers.",
             thumb: "assets/warningstar_news.png",
             link: "tool-warningstar.html"
         },
         {
-            title: "S9",
+            title: "S9 STRIKEMASTER",
             desc: "Regional vulnerability assessment and combat analysis platform (In Process).",
-            thumb: "assets/strikemaster_logo2.png",
+            thumb: "assets/strikemaster_zoomcover.png",
             link: "tool-strikemaster.html"
         }
     ],
@@ -45,14 +45,22 @@ const db = {
             id: "Terrorism",
             type: "html" // Direct HTML page
         },
+    ],
+    tweets: [
         {
-            title: "BLA Attack Analysis",
-            date: "FEB 2026",
-            desc: "Breakdown of the coordinated BLA attack and the ensuing Pakistani state counteroffensives.",
-            link: "reports/COIN Operations Following Operation Herof 2.pdf",
-            thumb: "assets/bla.png",
-            id: "Insurgency",
-            type: "local"
-        }
+            text: "Death of CJNG Cartel Leader Nemesio \"El Mencho\" Oseguera Cervantes",
+            date: "FEB 24, 2026",
+            url: "https://x.com/S4ETTA/status/2025959275219280138?s=20"
+        },
+        {
+            text: "Reading the Indications of Imminent US strikes into Iran",
+            date: "FEB 21, 2026",
+            url: "https://x.com/S4ETTA/status/2025166167716012508?s=20"
+        },
+        {
+            text: "Bombing of Khadija al-Kubra Imambargah Shia mosque in Islamabad, Pakistan",
+            date: "FEB 6, 2026",
+            url: "https://x.com/S4ETTA/status/2019788034867335205?s=20"
+        },
     ]
 };

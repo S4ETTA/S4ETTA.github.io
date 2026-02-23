@@ -114,8 +114,56 @@ function loadReports() {
     container.innerHTML = html;
 }
 
+function loadTweets() {
+    const gridContainer = document.getElementById('tweets-grid');
+    const listContainer = document.getElementById('tweets-list-container');
+
+    if (!db.tweets) return;
+
+    // Embed View (for reports.html) - Custom Tiles
+    if (gridContainer) {
+        const limitAttr = gridContainer.getAttribute('data-limit');
+        const limit = limitAttr ? parseInt(limitAttr, 10) : 4;
+        const items = limit > 0 ? db.tweets.slice(0, limit) : db.tweets;
+
+        let html = '';
+        items.forEach(item => {
+            html += `
+                <div class="tweet-card">
+                    <div class="tweet-content">
+                        <div class="tweet-title">${item.text}</div>
+                    </div>
+                    <div class="tweet-footer" style="display: flex; justify-content: space-between; align-items: flex-end;">
+                        <div class="tweet-date">${item.date}</div>
+                        <a href="${item.url}" target="_blank" class="btn btn-primary" style="margin-top:20px; width: auto; padding: 10px 15px;">READ REPORT</a>
+                    </div>
+                </div>
+            `;
+        });
+        gridContainer.innerHTML = html;
+    }
+
+    // List View (for tweets.html)
+    if (listContainer) {
+        let html = '<ul class="tweet-list">';
+        db.tweets.forEach(item => {
+            html += `
+                <li>
+                    <a href="${item.url}" target="_blank" class="tweet-list-item">
+                        <div class="tweet-list-date">${item.date}</div>
+                        <div class="tweet-list-text">${item.text}</div>
+                    </a>
+                </li>
+            `;
+        });
+        html += '</ul>';
+        listContainer.innerHTML = html;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     loadTools();
     loadPapers();
     loadReports();
+    loadTweets();
 });

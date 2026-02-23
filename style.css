@@ -193,6 +193,26 @@ h2 {
     gap: 50px;
 }
 
+/* --- REPORTS LAYOUT --- */
+.reports-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 40px;
+    align-items: start;
+}
+
+.twitter-sidebar h2 {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.twitter-embed-container {
+    border: 2px solid var(--ink-color);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    min-height: 500px;
+}
+
 .chapter-rail {
     position: sticky;
     top: 20px;
@@ -249,19 +269,95 @@ h2 {
 }
 
 /* --- COMPONENTS --- */
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
 .system-card,
-.report-card {
+.report-card,
+.tweet-card {
     border: 2px solid var(--ink-color);
     background: rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.tweet-card {
+    padding: 20px;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+
+.tweet-content {
+    flex-grow: 1;
+}
+
+.tweet-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: var(--ink-color);
+}
+
+.tweet-date {
+    font-size: 0.8rem;
+    color: var(--accent-red);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.tweet-embed-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tweet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tweet-list-item {
+    display: block;
+    padding: 20px;
+    border-bottom: 1px solid var(--ink-color);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.tweet-list-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tweet-list-date {
+    font-size: 0.8rem;
+    color: var(--accent-red);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tweet-list-text {
+    font-size: 1.1rem;
+    color: var(--ink-color);
+    line-height: 1.4;
+    font-weight: bold;
 }
 
 .sys-content {
@@ -548,10 +644,21 @@ h2 {
 }
 
 /* --- MOBILE RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .reports-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
 
     .dossier-layout,
     .bio-layout,
+    .grid-4,
     .grid-3 {
         grid-template-columns: 1fr;
     }
