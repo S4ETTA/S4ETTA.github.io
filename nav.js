@@ -6,7 +6,7 @@ const navHTML = `
         <div class="identity-block">
             <a href="index.html?v=${SAETTA_VERSION}" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
                 <div class="identity" style="margin-left:0;">
-                    <h1 style="font-size: 2.5rem; font-weight: bold; letter-spacing: -1px;">Charles Kim</h1>
+                    <h1 style="font-size: 2.5rem; font-weight: bold; letter-spacing: -1px; display: flex; align-items: baseline;">Charles Kim <span style="color: var(--accent-red); font-size: 1.2rem; margin-left: 10px;">SAETTA</span></h1>
                 </div>
             </a>
         </div>

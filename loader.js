@@ -159,6 +159,17 @@ function loadTweets() {
         html += '</ul>';
         listContainer.innerHTML = html;
     }
+
+    // Latest Reports View (for index.html footer)
+    const latestReportsList = document.getElementById('latest-reports-list');
+    if (latestReportsList) {
+        let html = '';
+        const limitItems = db.tweets.slice(0, 4);
+        limitItems.forEach(item => {
+            html += `<li style="line-height: 1.2; margin-bottom: 15px;"><a href="${item.url}" target="_blank" style="color: var(--bg-color); text-decoration: underline;">${item.text}</a></li>`;
+        });
+        latestReportsList.innerHTML = html;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
