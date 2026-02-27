@@ -48,9 +48,19 @@ const db = {
     ],
     tweets: [
         {
+            text: "Major Pakistani Military Escalation Against Afghanistan",
+            date: "FEB 26, 2026",
+            url: "https://x.com/S4ETTA/status/2027280313513398629?s=20"
+        },
+        {
             text: "Death of CJNG Cartel Leader Nemesio \"El Mencho\" Oseguera Cervantes",
             date: "FEB 24, 2026",
             url: "https://x.com/S4ETTA/status/2025959275219280138?s=20"
+        },
+        {
+            text: "CJNG Nationwide Retaliatory Counteroffensive",
+            date: "FEB 25, 2026",
+            url: "https://x.com/S4ETTA/status/2026462444126876138?s=20"
         },
         {
             text: "Reading the Indications of Imminent US strikes into Iran",
