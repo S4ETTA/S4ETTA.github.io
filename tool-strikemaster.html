@@ -21,30 +21,27 @@
             <nav class="rail-nav">
                 <a href="#overview" class="rail-link">01 OVERVIEW</a>
                 <a href="#platform" class="rail-link">02 DATA PLATFORM</a>
-                <a href="#panel" class="rail-link">03 OPERATION PANEL</a>
-                <a href="#modules" class="rail-link">04 MODULES</a>
+                <a href="#modules" class="rail-link">03 MODULES</a>
             </nav>
         </aside>
 
         <div class="dossier-body">
             <header class="page-header">
-                <h1>S9</h1>
-                <p>REGIONAL VULNERABILITY ASSESSMENT AND COMBAT ANALYSIS PLATFORM</p>
+                <h1>S9 STRIKEMASTER</h1>
+                <p>GEOSPATIAL ANALYSIS PLATFORM</p>
             </header>
 
             <div class="carousel-container">
+                <div class="carousel-slide" style="display:block;"><video src="assets/strikemaster_default.mp4" autoplay
+                        muted loop playsinline></video>
+                </div>
                 <div class="carousel-slide" style="display:block;"><video src="assets/strikemaster_demo.mp4" autoplay
                         muted loop playsinline></video>
                 </div>
-                <div class="carousel-slide"><img src="assets/strikemaster_default.png" alt="Strikemaster Overview">
+                <div class="carousel-slide"><img src="assets/strikemaster_casio.png" alt="CASIO">
                 </div>
-                <div class="carousel-slide"><img src="assets/strikemaster_loc.png" alt="Location Analysis">
+                <div class="carousel-slide"><img src="assets/strikemaster_lasior.png" alt="LASIOR">
                 </div>
-                <div class="carousel-slide"><img src="assets/strikemaster_missionpanel.png"
-                        alt="Strikemaster Mission Panel"></div>
-                <div class="carousel-slide"><img src="assets/strikemaster_cmp.png" alt="Comparative Analysis">
-                </div>
-
 
                 <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
                 <button class="carousel-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
@@ -53,42 +50,44 @@
             <article class="content-stream">
                 <section id="overview" class="text-block">
                     <h3>01 SYSTEM OVERVIEW</h3>
-                    <p>STRIKEMASTER is a specialised analytical and educational platform for assessing regional
-                        vulnerabilities and conflict scenarios. At its core, it serves as a simulator for state-level
-                        combat operations with a focus on regional contexts.</p>
+                    <p>STRIKEMASTER is a geospatial intelligence platform specialised in monitoring live military
+                        conflicts and assessing kinetic strike effects. Utilising an advanced high resolution satellite
+                        imagery fetching system, it is assisted by a number of tools to provide in-depth data analysis
+                        and visualisation. </p>
                 </section>
 
                 <section id="platform" class="text-block">
-                    <h3>02 DATA PLATFORM</h3>
+                    <h3>02 BASE PLATFORM</h3>
                     <p>The system is built on a modular architecture, with the baseline STRIKEMASTER serving as a
                         database and data processing platform. The system also provides basic GIS features, and allows
                         for modular upgrades. The analytical core runs on Gemma-3-27b, with support for both data
                         extraction and projection. The primary visual feed utilises multiple satellite imagery sources
-                        to provide a wide range of image date and faster loading. </p>
-                </section>
-
-                <section id="panel" class="text-block">
-                    <h3>03 OPERATION PANEL</h3>
-                    <p>Core intelligence is powered by advanced modeling to project engagement outcomes. Data is
-                        visualized to show regional hotspots, asset locations, and tactical movements. This structure
-                        ensures the analysis is not just a collection of points, but a coherent tactical display.</p>
+                        loading simultanaeously to provide a wide range of image date and faster loading. </p>
+                    <p>STRIKEMASTER features a smart crosshairs system that adapts to the mode being used and displays
+                        all necessary information without cluttering the visual feed. N/E and MGRS coordinates, imperial
+                        and metric distance markers, and altitude markers are displayed on the crosshairs, and allows
+                        for both coordinate injection and export.</p>
                 </section>
 
                 <section id="modules" class="text-block">
-                    <h3>04 MODULES</h3>
+                    <h3>03 MODULES</h3>
                     <p>The system includes various modular components for specialized analysis.</p>
                     <ul>
-                        <li><strong>Cruise Missile Pathfinder (CMP)</strong>: Tool for simulating the most attractive
-                            cruise missile
-                            paths using TERCOM and DSMAC guidance algorithms. INS error margins and presence of
-                            satellite guidance is also considered. Presets include BGM-109C Block V, JASSM, SCALP-EG,
-                            KALIBR, and BHRAMOS. </li>
-                        <li>(Planned) <strong>Population Effect Calculator (PEC)</strong>: Tool for calculating the
-                            effects to the
-                            population of a strike area.</li>
-                        <li>(Planned) <strong>European Space Commission Plugin</strong>: Tool for fetching live
-                            satellite imagery of the
-                            target area.</li>
+                        <li><strong>STRIKE</strong>: An educative tool for automatically assessing regional
+                            vulnerabilities and potential targets. Utilises a contextual learning protocol to provide
+                            the most updated and accurate information. Offers operation and target type presets to allow
+                            for a wide variety of scenarios to be simulated.</li>
+                        <li><strong>CASIO (Combined Aperture Satellite Imagery Overlay)</strong>: Satellite imagery
+                            fetcher with access to Sentinel 1 GRD C-Band, Sentinel 2 L2A True Colour, Sentinel 2 L2A B08
+                            NIR, Sentinel 2 L2A B12 SWIR, Sentinel 2 L2A NDVI, Sentinel 2 L2A NDWI, and Sentinel 3 SLSTR
+                            THERMAL. Allows for a image data controls, snapshots, and exports.</li>
+                        <li><strong>LASIOR (Low Altitude Satellite Imagery Object Recognition)</strong>: AI-enhanced
+                            object recognition system, that utilises both regional contextual data and machine learning
+                            to identify objects of interest. Currently being trained for detailed aircraft
+                            identification.</li>
+                        <li>(planned)<strong>CKSEA (Combined Kinetic Strike Effects Assessment)</strong>: Data
+                            visualisation tool for assessing the effects of precision guided munitions and creating a
+                            comprehensive data sheet to be exported and shared.</li>
                     </ul>
                 </section>
             </article>

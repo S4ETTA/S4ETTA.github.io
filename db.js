@@ -3,7 +3,7 @@ const db = {
     tools: [
         {
             title: "S7 PHOBOS",
-            desc: "Ontology-based global early warning and threat assessment platform.",
+            desc: "Node-based global early warning and threat assessment platform.",
             thumb: "assets/phobos_logo3.png",
             link: "tool-phobos.html"
         },
@@ -15,7 +15,7 @@ const db = {
         },
         {
             title: "S9 STRIKEMASTER",
-            desc: "Regional vulnerability assessment and combat analysis platform (In Process).",
+            desc: "Multipurpose geospatial analysis platform.",
             thumb: "assets/strikemaster_zoomcover.png",
             link: "tool-strikemaster.html"
         }
@@ -48,6 +48,21 @@ const db = {
     ],
     tweets: [
         {
+            text: "Gulf State Offensive Integration & Air Order of Battle",
+            date: "MAR 01, 2026",
+            url: "https://x.com/S4ETTA/status/2028059841437257892?s=20"
+        },
+        {
+            text: "Target Profiles of the Hits on Ali Al Salem AB, Kuwait",
+            date: "MAR 01, 2026",
+            url: "https://x.com/S4ETTA/status/2027920708815491484?s=20"
+        },
+        {
+            text: "Operation Lion's Roar & The Iranian Front",
+            date: "FEB 28, 2026",
+            url: "https://x.com/S4ETTA/status/2027665592959045682?s=20"
+        },
+        {
             text: "Major Pakistani Military Escalation Against Afghanistan",
             date: "FEB 26, 2026",
             url: "https://x.com/S4ETTA/status/2027280313513398629?s=20"
@@ -69,7 +84,7 @@ const db = {
         },
         {
             text: "Bombing of Khadija al-Kubra Imambargah Shia mosque in Islamabad, Pakistan",
-            date: "FEB 6, 2026",
+            date: "FEB 06, 2026",
             url: "https://x.com/S4ETTA/status/2019788034867335205?s=20"
         },
     ]
