@@ -16,9 +16,25 @@
     <main class="container">
         <section class="reports-section" style="margin-bottom: 60px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2>WRITTEN REPORTS - ALL</h2>
-                <a href="reports.html" class="btn">BACK TO REPORTS</a>
+                <h2>REPORT DATABASE</h2>
+                <a href="reports.html" class="btn">BACK TO OVERVIEW</a>
             </div>
+            
+            <div class="filter-group" id="report-filters">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <div style="width: 1px; background: rgba(26,26,26,0.2); margin: 0 10px;"></div>
+                <button class="filter-btn" data-filter="insight">INSIGHT</button>
+                <button class="filter-btn" data-filter="geoint">GEOINT</button>
+                <button class="filter-btn" data-filter="data">DATA PACKAGES</button>
+                <div style="width: 1px; background: rgba(26,26,26,0.2); margin: 0 10px;"></div>
+                <button class="filter-btn" data-filter="Iran">IRAN</button>
+                <button class="filter-btn" data-filter="China">CHINA</button>
+                <button class="filter-btn" data-filter="Gulf">GULF</button>
+                <button class="filter-btn" data-filter="Americas">AMERICAS</button>
+                <button class="filter-btn" data-filter="Asia">ASIA</button>
+                <button class="filter-btn" data-filter="Terrorism">HEZBOLLAH</button>
+            </div>
+
             <div id="tweets-list-container"></div>
         </section>
     </main>

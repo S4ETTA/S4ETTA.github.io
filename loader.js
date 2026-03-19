@@ -5,8 +5,11 @@ function loadTools() {
     if (!container) return;
     let html = '';
     db.tools.forEach(item => {
+        let isLarge = item.title.includes("S7") || item.title.includes("S9");
+        let cardClass = isLarge ? "system-card large-system-card" : "system-card";
+        
         html += `
-            <div class="system-card">
+            <div class="${cardClass}">
                 <div class="card-img-container">
                     <img src="${item.thumb}">
                 </div>
@@ -54,127 +57,123 @@ function renderReportGrid(dataArray, targetElement) {
     targetElement.innerHTML = html;
 }
 
-function loadReports() {
-    const container = document.getElementById('report-grid');
+function renderMixedGrid(dataArray, containerId) {
+    const container = document.getElementById(containerId);
     if (!container) return;
+    
+    const limitAttr = container.getAttribute('data-limit');
+    let items = dataArray;
+    if (limitAttr) {
+        const limit = parseInt(limitAttr, 10);
+        if (limit > 0) items = dataArray.slice(0, limit);
+    }
+
+    const isCompact = containerId === 'insight-grid';
+
     let html = '';
-    // Use dataReports or fallback to empty
-    const reports = db.dataReports || [];
-    reports.forEach(item => {
-        let finalLink = item.link;
-        if (item.type === 'local') {
-            finalLink = `viewer.html?id=${encodeURIComponent(item.title)}`;
-            // We'll map title to file in viewer or pass file path?
-            // Simpler: Pass the file path in ID or look it up in DB. 
-            // `viewer.html` needs to know the PDF path.
-            // Let's pass the ID we set in DB? 
-            // In DB I didn't set a unique machine ID, I used "id" for category (Terrorism).
-            // I should probably use the array index or a new unique slug.
-            // For now, I'll pass the array index or title.
-            // Let's update viewer.html to assume it gets a `file` param or look up by title? 
-            // The plan said "Look up metadata in db.js".
-            // So I'll pass `id` parameter as the title or a slug.
-            // Let's generate a slug from title.
-        }
-
-        // Image handling
-        let imageBlock = '';
-        if (item.thumb) {
-            imageBlock = `<div class="card-img-container">
-                            <img src="${item.thumb}">
-                          </div>`;
-        } else {
-            imageBlock = `<div class="card-img-fallback">
-                             <h1>REF</h1>
-                        </div>`;
-        }
-
-        let isLinkInvalid = !item.link || item.link === '#' || item.link === '';
-        // If type is local, we constructed finalLink, but if item.link was originally empty/missing, we might consider it disabled unless we have a specific file logic
-        // But for local reports, we usually have a file.
-        // Let's rely on finalLink being valid.
-        if (item.type === 'local' && item.link) isLinkInvalid = false; // Override if local logic used
-
-        const btnClass = isLinkInvalid ? 'btn disabled' : 'btn';
-        const hrefAttr = isLinkInvalid ? '' : `href="${finalLink}"`;
-
-        html += `
+    items.forEach(item => {
+        if (item.type === 'html' || item.thumb) {
+            html += `
             <div class="system-card">
-                ${imageBlock}
+                <div class="card-img-container"><img src="${item.thumb}"></div>
                 <div class="sys-content">
                     <div class="sys-id-tag">ID: ${item.id}</div>
                     <h3 class="sys-title">${item.title}</h3>
-                    ${item.date ? `<div class="sys-date-tag">${item.date}</div>` : ''}
+                    <div class="sys-date-tag">${item.date}</div>
                     <p class="sys-desc">${item.desc}</p>
-                    <a ${hrefAttr} class="${btnClass}" ${item.type === 'external' ? 'target="_blank"' : ''}>ACCESS</a>
+                    <a href="${item.link}" class="btn">ACCESS</a>
                 </div>
             </div>
-        `;
+            `;
+        } else {
+            let limitChars = item.text.length > 80 ? item.text.substring(0, 80) + "..." : item.text;
+            html += `
+            <div class="tweet-card compact-tweet-card" style="padding: 15px;">
+                <div class="tweet-content">
+                    <div class="tweet-title" style="margin-bottom: 5px; font-size: 1rem;">${limitChars}</div>
+                    <div class="tweet-date" style="font-size: 0.75rem;">${item.date}</div>
+                </div>
+                <a href="${item.url}" target="_blank" class="btn btn-primary" style="margin-top:15px; width: 100%; padding: 8px;">READ REPORT</a>
+            </div>
+            `;
+        }
     });
     container.innerHTML = html;
 }
 
-function loadTweets() {
-    const gridContainer = document.getElementById('tweets-grid');
-    const listContainer = document.getElementById('tweets-list-container');
+function loadReportsAndTweets() {
+    if (db.insightReports) renderMixedGrid(db.insightReports, 'insight-grid');
+    if (db.geointReports) renderMixedGrid(db.geointReports, 'geoint-grid');
 
-    if (!db.tweets) return;
-
-    // Embed View (for reports.html) - Custom Tiles
-    if (gridContainer) {
-        const limitAttr = gridContainer.getAttribute('data-limit');
-        const limit = limitAttr ? parseInt(limitAttr, 10) : 4;
-        const items = limit > 0 ? db.tweets.slice(0, limit) : db.tweets;
-
-        let html = '';
-        items.forEach(item => {
-            html += `
-                <div class="tweet-card">
-                    <div class="tweet-content">
-                        <div class="tweet-title">${item.text}</div>
-                    </div>
-                    <div class="tweet-footer" style="display: flex; justify-content: space-between; align-items: flex-end;">
-                        <div class="tweet-date">${item.date}</div>
-                        <a href="${item.url}" target="_blank" class="btn btn-primary" style="margin-top:20px; width: auto; padding: 10px 15px;">READ REPORT</a>
-                    </div>
-                </div>
-            `;
-        });
-        gridContainer.innerHTML = html;
-    }
-
-    // List View (for tweets.html)
-    if (listContainer) {
-        let html = '<ul class="tweet-list">';
-        db.tweets.forEach(item => {
-            html += `
-                <li>
-                    <a href="${item.url}" target="_blank" class="tweet-list-item">
-                        <div class="tweet-list-date">${item.date}</div>
-                        <div class="tweet-list-text">${item.text}</div>
-                    </a>
-                </li>
-            `;
-        });
-        html += '</ul>';
-        listContainer.innerHTML = html;
-    }
-
-    // Latest Reports View (for index.html footer)
     const latestReportsList = document.getElementById('latest-reports-list');
-    if (latestReportsList) {
+    if (latestReportsList && db.insightReports) {
         let html = '';
-        const limitItems = db.tweets.slice(0, 4);
+        const limitItems = db.insightReports.filter(i => i.type === 'tweet').slice(0, 4);
         limitItems.forEach(item => {
             html += `<li style="line-height: 1.2; margin-bottom: 15px;"><a href="${item.url}" target="_blank" style="color: var(--bg-color); text-decoration: underline;">${item.text}</a></li>`;
         });
         latestReportsList.innerHTML = html;
+    }
+
+    const listContainer = document.getElementById('tweets-list-container');
+    if (listContainer) {
+        // Tag all items with their source category
+        let insight = (db.insightReports || []).map(i => ({...i, category: 'insight'}));
+        let geoint = (db.geointReports || []).map(i => ({...i, category: 'geoint'}));
+        let dataP = (db.dataPackages || []).map(i => ({...i, category: 'data'}));
+        
+        let allReports = [...insight, ...geoint, ...dataP];
+        
+        allReports.sort((a,b) => new Date(b.date) - new Date(a.date));
+        
+        function renderList(filter) {
+            let filtered = filter === 'all' ? allReports : allReports.filter(i => i.category === filter || (i.tags && i.tags.includes(filter)));
+            
+            let html = '<ul class="tweet-list">';
+            filtered.forEach(item => {
+                let badgeColor = '';
+                let badgeText = '';
+                if(item.category === 'insight') { badgeColor = 'var(--ink-color)'; badgeText = 'INSIGHT'; }
+                if(item.category === 'geoint') { badgeColor = 'var(--accent-red)'; badgeText = 'GEOINT'; }
+                if(item.category === 'data') { badgeColor = 'var(--secondary-color)'; badgeText = 'DATA PACKAGE'; }
+
+                let titleOrText = item.text || item.title;
+                let finalLink = item.url || item.link;
+
+                // Added text-align: left to force everything left regardless of category
+                html += `
+                    <li style="text-align: left;">
+                        <a href="${finalLink}" target="_blank" class="tweet-list-item" style="text-align: left;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <div class="tweet-list-date">${item.date}</div>
+                                <div style="font-size: 0.65rem; font-weight: bold; background: ${badgeColor}; color: var(--bg-color); padding: 3px 8px; border-radius: 2px;">${badgeText}</div>
+                            </div>
+                            <div class="tweet-list-text">${titleOrText}</div>
+                        </a>
+                    </li>
+                `;
+            });
+            html += '</ul>';
+            listContainer.innerHTML = html;
+        }
+
+        // Initial render
+        renderList('all');
+
+        // Setup filter buttons
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderList(e.target.getAttribute('data-filter'));
+            });
+        });
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     loadTools();
     loadPapers();
-    loadReports();
-    loadTweets();
+    loadReportsAndTweets();
 });

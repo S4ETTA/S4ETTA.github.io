@@ -17,9 +17,8 @@
             <div class="rail-header">SYSTEM NAV</div>
             <nav class="rail-nav">
                 <a href="#overview" class="rail-link">01 OVERVIEW</a>
-                <a href="#aggregator" class="rail-link">02 AGGREGATOR</a>
-                <a href="#briefing" class="rail-link">03 BRIEFING</a>
-                <a href="#deployment" class="rail-link">04 DEPLOYMENT</a>
+                <a href="#features" class="rail-link">02 SYSTEM FEATURES</a>
+                <a href="#deployment" class="rail-link">03 DEPLOYMENT</a>
             </nav>
         </aside>
 
@@ -51,27 +50,35 @@
                         built-in backend security.</p>
                 </section>
 
-                <section id="aggregator" class="text-block">
-                    <h3>02 DATA AGGREGATION (Channel Required: #warningstar-feed)</h3>
-                    <p><strong>Data Aggregation:</strong> WARNINGSTAR autonomously wakes up every 2 hours through Github
-                        Actions and collects the newest data from specified and customisable news sources.</p>
-                    <p><strong>Data Filtering:</strong> Once collected, the system internally filters through and only
-                        maintains articles relevant to the current operational context, through a combination of
-                        customisable keyword focuses.</p>
-                    <p><strong>Data Display:</strong> Filtered data is displayed in a dedicated Discord channel in the
-                        form of an easy-to-read embed summary, and the source url. Each displayed article is saved in an
-                        internal database to prevent duplication, and to be used by the AI for weekly briefing.</p>
-                </section>
+                <section id="features" class="text-block">
+                    <h3>02 SYSTEM FEATURES</h3>
+                    <p>The system is comprised of two core features that operate autonomously via scheduled workflows.</p>
+                    <div class="module-grid">
+                        <div class="module-card">
+                            <div class="module-title">
+                                DATA AGGREGATOR <span class="module-status">ACTIVE</span>
+                            </div>
+                            <div class="module-desc">
+                                <strong>Channel Required:</strong> #warningstar-feed<br><br>
+                                <strong>Aggregation & Filtering:</strong> Autonomously wakes up every 2 hours and collects the newest data from specified news sources. Internally filters and only maintains articles relevant to the operational context via customisable keyword focuses.<br><br>
+                                <strong>Data Display:</strong> Filtered data is displayed in a dedicated Discord channel as an easy-to-read embed summary. Each displayed article is saved to prevent duplication.
+                            </div>
+                        </div>
 
-                <section id="briefing" class="text-block">
-                    <h3>03 WEEKLY BRIEFING (Channel Required: #warningstar-brief)</h3>
-                    <p>Every Monday at 00:00 UTC, WARNINGSTAR generates a comprehensive weekly intelligence briefing of
-                        the past week, summarised and organised by an onboard AI. Each summary is sorted by their
-                        respective regions (Americas, US Politics, Europe, MENA, Indopacific)</p>
+                        <div class="module-card">
+                            <div class="module-title">
+                                WEEKLY BRIEFING <span class="module-status">ACTIVE</span>
+                            </div>
+                            <div class="module-desc">
+                                <strong>Channel Required:</strong> #warningstar-brief<br><br>
+                                Every Monday at 00:00 UTC, the system generates a comprehensive weekly intelligence briefing of the past week, summarised and organised by an onboard AI. Each summary is sorted by their respective regions (Americas, US Politics, Europe, MENA, Indopacific).
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="deployment" class="text-block">
-                    <h3>04 Deployment</h3>
+                    <h3>03 DEPLOYMENT</h3>
                     <p>WARNINSTAR is complete and ready for deployment. Click the link below to invite it into a server
                         of your choice. All required permissions are listed in the authorization link. Once invited, the
                         system does not require any manual tuning nor modification. All tasks are automated. Make sure

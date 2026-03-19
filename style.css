@@ -26,6 +26,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 body::before {
@@ -54,6 +55,7 @@ img {
 
 /* --- LAYOUT CONTAINERS --- */
 .container {
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 30px 40px 30px;
@@ -297,6 +299,33 @@ h2 {
     height: 100%;
 }
 
+.large-system-card {
+    grid-column: span 3;
+    flex-direction: row;
+}
+
+.large-system-card .card-img-container {
+    width: 450px;
+    height: auto;
+    border-bottom: none;
+    border-right: 2px solid var(--ink-color);
+}
+
+.large-system-card .sys-content {
+    padding: 30px;
+    justify-content: center;
+}
+
+.large-system-card .sys-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.large-system-card .sys-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
 .tweet-card {
     padding: 20px;
     justify-content: space-between;
@@ -332,6 +361,7 @@ h2 {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .tweet-list-item {
@@ -463,6 +493,93 @@ h2 {
     color: var(--bg-color);
 }
 
+/* --- MODULE FEATURES --- */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.module-card {
+    border: 2px solid var(--ink-color);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    position: relative;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.module-card:hover {
+    background: rgba(26, 26, 26, 0.05);
+    transform: translateY(-2px);
+}
+
+.module-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.module-status {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+    background: var(--ink-color);
+    color: var(--bg-color);
+    opacity: 0.8;
+}
+
+.module-status.planned {
+    background: transparent;
+    border: 1px dashed var(--ink-color);
+    color: var(--ink-color);
+}
+
+.module-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* --- FILTER BUTTONS --- */
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(26, 26, 26, 0.2);
+    padding-bottom: 15px;
+}
+
+.filter-btn {
+    background: transparent;
+    color: var(--ink-color);
+    border: 2px solid transparent;
+    border-bottom: 2px solid var(--ink-color);
+    padding: 8px 15px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+}
+
+.filter-btn:hover {
+    opacity: 1;
+    background: rgba(26, 26, 26, 0.05);
+}
+
+.filter-btn.active {
+    opacity: 1;
+    border: 2px solid var(--ink-color);
+    background: var(--ink-color);
+    color: var(--bg-color);
+}
+
 /* --- CAROUSEL --- */
 .carousel-container {
     position: relative;
@@ -514,9 +631,11 @@ h2 {
 
 .text-block h3 {
     margin-top: 0;
-    font-size: 0.9rem;
-    opacity: 0.6;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    opacity: 0.9;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
 /* --- MATH BLOCKS --- */

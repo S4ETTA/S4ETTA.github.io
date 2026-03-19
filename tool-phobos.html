@@ -20,10 +20,8 @@
             <div class="rail-header">CHAPTERS</div>
             <nav class="rail-nav">
                 <a href="#overview" class="rail-link">01 OVERVIEW</a>
-                <a href="#ingestion" class="rail-link">02 DATA INGESTION</a>
-                <a href="#extraction" class="rail-link">03 DATA PROJECTION</a>
-                <a href="#matrix" class="rail-link">04 THREAT MATRIX</a>
-                <a href="#roadmap" class="rail-link">05 PREDICTION</a>
+                <a href="#architecture" class="rail-link">02 SYSTEM ARCHITECTURE</a>
+                <a href="#matrix" class="rail-link">03 THREAT MATRIX</a>
             </nav>
         </aside>
 
@@ -58,30 +56,41 @@
                         saturation.</p>
                 </section>
 
-                <section id="ingestion" class="text-block">
-                    <h3>02 DATA INGESTION</h3>
-                    <p>The system utilizes a <strong>multi-vector ingestion pipeline</strong> designed for high
-                        availability. It features an automated feed handler triggered by GitHub Actions that pulls raw
-                        JSON payloads from international news feeds. Simultaneously, it integrates a manual injection
-                        protocol, allowing analysts to merge classified HUMINT or offline OSINT notes directly into the
-                        stream.</p>
-                </section>
+                <section id="architecture" class="text-block">
+                    <h3>02 SYSTEM ARCHITECTURE</h3>
+                    <p>Phobos is structured into several interconnected pipelines to process disparate data into a unified threat picture.</p>
+                    <div class="module-grid">
+                        <div class="module-card">
+                            <div class="module-title">
+                                DATA INGESTION <span class="module-status">ACTIVE</span>
+                            </div>
+                            <div class="module-desc">
+                                A <strong>multi-vector ingestion pipeline</strong> designed for high availability. It features an automated feed handler triggered by GitHub Actions that pulls raw JSON payloads from international news feeds. Simultaneously, it integrates a manual injection protocol, allowing analysts to merge classified HUMINT or offline OSINT notes directly into the stream.
+                            </div>
+                        </div>
 
-                <section id="extraction" class="text-block">
-                    <h3>03 DATA PROJECTION</h3>
-                    <p>Core intelligence is powered by a 27B Parameter Instruction-Tuned Model (Gemma 3). The extraction
-                        process uses a <strong>hybrid parsing engine</strong>: a primary layer enforces strict JSON
-                        schema for event scoring, while a secondary Regex safety net recovers data if the model produces
-                        unstructured text. Data is visualized via NetworkX as a multi-layer planetary graph, each layer
-                        representing a specific data type. This structure ensures the graph is not just a cluster of
-                        nodes, but an observable data source. Layer 1 projects countries, Layer 2 projects contingencies
-                        and live data (NOTAM, USGS, FR24, Travel Advisories), Layer 3 projects event nodes, and Layer 4
-                        projects OSINT nodes. Duplicate and reposted events are filtered out using Levenshtein distance
-                        and crisis node connections in order to maintain accuracy in threat assessment.</p>
+                        <div class="module-card">
+                            <div class="module-title">
+                                DATA PROJECTION <span class="module-status">ACTIVE</span>
+                            </div>
+                            <div class="module-desc">
+                                Core intelligence is powered by a 27B Parameter Instruction-Tuned Model via a <strong>hybrid parsing engine</strong>. Data is visualized via NetworkX as a multi-layer planetary graph (Countries, Contingencies, Events, OSINT nodes). Duplicate events are filtered using Levenshtein distance and crisis node connections.
+                            </div>
+                        </div>
+
+                        <div class="module-card">
+                            <div class="module-title">
+                                EVENT PREDICTION <span class="module-status planned">TESTING</span>
+                            </div>
+                            <div class="module-desc">
+                                The <strong>Temporal Recursion Model (TRM)</strong> utilises a sophisticated prediction algorithm to read and project future scenario escalation. The algorithm uses an onboard database to find historical patterns on a developing scenario and sequentialises the pattern into a "shadow event" to determine the probability of future escalation.
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="matrix" class="text-block">
-                    <h3>04 THREAT MATRIX</h3>
+                    <h3>03 THREAT MATRIX</h3>
                     <p>The Threat Matrix moves beyond qualitative description to a quantitative Weighted Threat Score
                         (WTS). The equation combines the historical accumulation of threat points ($S_{total}$) with a
                         "Recency Multiplier" and an "Intensity Weight":</p>
@@ -113,15 +122,6 @@
                         Alert" state in the UI.</p>
                 </section>
 
-                <section id="evp" class="text-block">
-                    <h3>05 TEMPORAL RECURSION MODEL </h3>
-                    <p>The Temporal Recursion Model (TRM) utilises a sophisticated prediction algorithm to read and
-                        project future scenario escalation. The algorithm uses an onboard database to find historical
-                        patterns on a developing scenario and sequentialises the pattern into a "shadow event", which is
-                        then matched with the current event to determine the probability of future escalation. The TRM
-                        allows the user to observe ongoing events in real-time and react or adjust accordingly. TRM is
-                        currently under training and testing. </p>
-                </section>
             </article>
 
             <footer class="tool-footer">
