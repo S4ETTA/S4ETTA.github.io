@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S7 PHOBOS SAETTA</title>
-    <link rel="stylesheet" href="style.css?v=1.60">
+    <link rel="stylesheet" href="style.css?v=2.00">
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
         </script>
@@ -22,6 +22,7 @@
                 <a href="#overview" class="rail-link">01 OVERVIEW</a>
                 <a href="#architecture" class="rail-link">02 SYSTEM ARCHITECTURE</a>
                 <a href="#matrix" class="rail-link">03 THREAT MATRIX</a>
+                <a href="#predictive" class="rail-link">04 PREDICTIVE MODEL</a>
             </nav>
         </aside>
 
@@ -32,14 +33,12 @@
             </header>
 
             <div class="carousel-container">
-                <div class="carousel-slide" style="display:block;"><img src="assets/phobos_terminal.png"
+                <div class="carousel-slide" style="display:block;"><img src="assets/phobos_overwatch.png"
                         alt="Phobos Terminal UI"></div>
                 <div class="carousel-slide"><video src="assets/phobos_nodegraph.mp4" autoplay muted loop
                         playsinline></video>
                 </div>
-                <div class="carousel-slide"><img src="assets/phobos_overwatch.png" alt="Contingency Overwatch">
-                </div>
-                <div class="carousel-slide"><img src="assets/phobos_threatmatrix.png" alt="Contingency Overwatch">
+                <div class="carousel-slide"><img src="assets/phobos_glaive.png" alt="Contingency Overwatch">
                 </div>
 
                 <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
@@ -49,7 +48,7 @@
             <article class="content-stream">
                 <section id="overview" class="text-block">
                     <h3>01 SYSTEM OVERVIEW</h3>
-                    <p>PHOBOS is a Dockerized, full-stack intelligence dashboard designed to autonomously ingest,
+                    <p>PHOBOS is a full-stack threat assessment platform designed to autonomously ingest,
                         normalize, and visualize geopolitical threats in real-time. Unlike traditional news aggregators
                         that simply list headlines, PHOBOS employs a custom graph theory architecture to map
                         relationships between isolated events, identifying "Crisis Clusters" before they hit mainstream
@@ -58,14 +57,19 @@
 
                 <section id="architecture" class="text-block">
                     <h3>02 SYSTEM ARCHITECTURE</h3>
-                    <p>Phobos is structured into several interconnected pipelines to process disparate data into a unified threat picture.</p>
+                    <p>Phobos is structured into several interconnected pipelines to process disparate data into a
+                        unified threat picture.</p>
                     <div class="module-grid">
                         <div class="module-card">
                             <div class="module-title">
                                 DATA INGESTION <span class="module-status">ACTIVE</span>
                             </div>
                             <div class="module-desc">
-                                A <strong>multi-vector ingestion pipeline</strong> designed for high availability. It features an automated feed handler triggered by GitHub Actions that pulls raw JSON payloads from international news feeds. Simultaneously, it integrates a manual injection protocol, allowing analysts to merge classified HUMINT or offline OSINT notes directly into the stream.
+                                A <strong>multi-vector ingestion pipeline</strong> designed for high availability. It
+                                features an automated feed handler triggered by GitHub Actions that pulls raw JSON
+                                payloads from international news feeds. For every data inegsted, a built-in algorithm
+                                that utilises levenshtein distance and semantic cosine calculation to ensure duplicate
+                                events are not ingested twice.
                             </div>
                         </div>
 
@@ -74,16 +78,14 @@
                                 DATA PROJECTION <span class="module-status">ACTIVE</span>
                             </div>
                             <div class="module-desc">
-                                Core intelligence is powered by a 27B Parameter Instruction-Tuned Model via a <strong>hybrid parsing engine</strong>. Data is visualized via NetworkX as a multi-layer planetary graph (Countries, Contingencies, Events, OSINT nodes). Duplicate events are filtered using Levenshtein distance and crisis node connections.
-                            </div>
-                        </div>
+                                Core intelligence is powered by a 27B Parameter Instruction-Tuned Model via a
+                                <strong>hybrid parsing engine</strong>. Data is visualized via NetworkX as a multi-layer
+                                planetary graph (Countries, Contingencies, Events, OSINT nodes). The graph holds 45 days
+                                worth of events, with each event forming a funnel-shaped timeline framework that acts as
+                                the basis for threat analysis and scenario projection. As events are spooled out, an
+                                onboard AI continuously assigns a semantic coordinate to the node in order to accurately
+                                organise and group contingencies.
 
-                        <div class="module-card">
-                            <div class="module-title">
-                                EVENT PREDICTION <span class="module-status planned">TESTING</span>
-                            </div>
-                            <div class="module-desc">
-                                The <strong>Temporal Recursion Model (TRM)</strong> utilises a sophisticated prediction algorithm to read and project future scenario escalation. The algorithm uses an onboard database to find historical patterns on a developing scenario and sequentialises the pattern into a "shadow event" to determine the probability of future escalation.
                             </div>
                         </div>
                     </div>
@@ -91,8 +93,9 @@
 
                 <section id="matrix" class="text-block">
                     <h3>03 THREAT MATRIX</h3>
-                    <p>The Threat Matrix moves beyond qualitative description to a quantitative Weighted Threat Score
-                        (WTS). The equation combines the historical accumulation of threat points ($S_{total}$) with a
+                    <p>The Threat Matrix calculates the quantitative Weighted Threat Score
+                        (WTS) of each contingency. The equation combines the historical accumulation of threat points
+                        ($S_{total}$) with a
                         "Recency Multiplier" and an "Intensity Weight":</p>
 
                     <div class="math-block">
@@ -122,6 +125,25 @@
                         Alert" state in the UI.</p>
                 </section>
 
+                <section id="predictive" class="text-block">
+                    <h3>04 PREDICTIVE MODEL</h3>
+                    <p>The <strong>S14 GLAIVE Procedural Scenario Development Model</strong> utilises a
+                        dual-pathing algorithm to read real-time signs and arrive at a predictive conclusion for
+                        specific user-defined scenarios. FIrst, the built in semantic coordinates, node cross sections,
+                        and contextual variables are utilised to group directly and indirectly related events into
+                        contingency clusters, and of the clusters, the nodes with the highest similarties and intent
+                        alignment are selected. The selected nodes are weighted based on threat index and recency, and
+                        then the algorithm uses a refined Bayesian Network to
+                        calculate the likely probability of the specific scenario occuring based on historical occurence
+                        probability. This process uses
+                        approximately 300 hardcoded parameters (e.g. election leads to regional destabilisation,
+                        middle eastern conflict leads to higher gas prices, etc.) and an indefinite number of
+                        intuitive AI parameters to course-correct and refine the probability. Of the multiple projected
+                        eventualities of the defined scenario, the timeline of
+                        the highest probability is pitched, and the most likely timeframe is presented to the
+                        user.</p>
+                </section>
+
             </article>
 
             <footer class="tool-footer">
@@ -145,7 +167,7 @@
             slides[slideIndex - 1].style.display = "block";
         }
     </script>
-    <script src="nav.js?v=1.60"></script>
+    <script src="nav.js?v=2.00"></script>
 </body>
 
 </html>

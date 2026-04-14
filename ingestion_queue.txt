@@ -1,0 +1,6 @@
+# SAETTA INGESTION QUEUE
+
+Drop X (Twitter) post links below. 
+When ready, simply prompt me to "process the ingestion queue" and I will automatically fetch the data, update the database, and clear this file.
+
+---

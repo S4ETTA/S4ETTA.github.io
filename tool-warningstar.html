@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WARNINGSTAR SAETTA</title>
-    <link rel="stylesheet" href="style.css?v=1.60">
+    <link rel="stylesheet" href="style.css?v=2.00">
 </head>
 
 <body>
@@ -25,13 +25,15 @@
         <div class="dossier-body">
             <header class="page-header">
                 <h1>S2A WARNINGSTAR</h1>
-                <p>DISCORD-BOUND INTERNATIONAL SECURITY DATA AGGREGATOR</p>
+                <p>DISCORD-BOUND NEWS AGGREGATOR AND THREAT ASSESSMENT SYSTEM</p>
             </header>
 
             <div class="carousel-container">
-                <div class="carousel-slide" style="display:block;"><img src="assets/warningstar_news.png"
-                        alt="WarningStar Live Feed"></div>
-                <div class="carousel-slide"><img src="assets/warningstar_brief.png" alt="WarningStar Briefing">
+                <div class="carousel-slide" style="display:block;"><img src="assets/warningstar_intro.png"
+                        alt="WarningStar Intros"></div>
+                <div class="carousel-slide"><img src="assets/warningstar_news.png" alt="WarningStar News Feed">
+                </div>
+                <div class="carousel-slide"><img src="assets/warningstar_channels.png" alt="WarningStar Channels">
                 </div>
 
                 <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
@@ -41,37 +43,46 @@
             <article class="content-stream">
                 <section id="overview" class="text-block">
                     <h3>01 SYSTEM OVERVIEW</h3>
-                    <p>WARNINGSTAR is a Discord-bound international security data aggregator. It serves as a news
-                        aggregator for discord servers, providing real-time updates on global security issues, and
-                        drafting region-based intelligence briefings every week. The system is built on a Python ba
-                        ckend
-                        integrating specifically with the Discord.py library. It utilises the Discord messaging app as
-                        frontend, taking advantage of both its well-designed UI and channel structures, as well as the
-                        built-in backend security.</p>
+                    <p>WARNINGSTAR is a Discord-bound international security data aggregator. It serves as a centralised
+                        news feed, providing real-time updates on global events and autonomously categorising them by
+                        regions and threat indexes. It takes advantage of the accessibility and security features of
+                        Discord as a frontend, while maintaining a robust Python backend.</p>
                 </section>
 
                 <section id="features" class="text-block">
                     <h3>02 SYSTEM FEATURES</h3>
-                    <p>The system is comprised of two core features that operate autonomously via scheduled workflows.</p>
+                    <p>The system is comprised of two core features that operate autonomously via scheduled workflows.
+                    </p>
                     <div class="module-grid">
                         <div class="module-card">
                             <div class="module-title">
                                 DATA AGGREGATOR <span class="module-status">ACTIVE</span>
                             </div>
                             <div class="module-desc">
-                                <strong>Channel Required:</strong> #warningstar-feed<br><br>
-                                <strong>Aggregation & Filtering:</strong> Autonomously wakes up every 2 hours and collects the newest data from specified news sources. Internally filters and only maintains articles relevant to the operational context via customisable keyword focuses.<br><br>
-                                <strong>Data Display:</strong> Filtered data is displayed in a dedicated Discord channel as an easy-to-read embed summary. Each displayed article is saved to prevent duplication.
+                                <strong>Aggregation & Filtering:</strong> Through Github Actions, WARNINGSTAR wakes up
+                                every hour to autonomously collect, process, filter, and display events relevant to
+                                international security and politics. Each event is tagged with their respective source,
+                                country, region of interest, and threat index.<br><br>
+                                <strong>Data Display:</strong> Filtered events are posted to their respective regions,
+                                through channels representing each US CCMD (Unified Combatant Command). This allows for
+                                users to selectively ingest news from their areas of focus, and control the amount of
+                                engagement they have accordingly.
                             </div>
                         </div>
 
                         <div class="module-card">
                             <div class="module-title">
-                                WEEKLY BRIEFING <span class="module-status">ACTIVE</span>
+                                THREAT ASSESSMENT <span class="module-status">ACTIVE</span>
                             </div>
                             <div class="module-desc">
-                                <strong>Channel Required:</strong> #warningstar-brief<br><br>
-                                Every Monday at 00:00 UTC, the system generates a comprehensive weekly intelligence briefing of the past week, summarised and organised by an onboard AI. Each summary is sorted by their respective regions (Americas, US Politics, Europe, MENA, Indopacific).
+                                WARNINGSTAR utilises a sophisticated threat assessment algorithm that scores and tags
+                                events based on their potential impact on global stability. Ranging from 0 to 10, the
+                                algorithm takes into account of the general impact of the event type (elections, armed
+                                conflicts, coups, etc.), semantic event type (kinetic, active, passive, speculative)
+                                relative effects chain (neighboring states, alliances, enemies), direct impact on
+                                regional stability, and historical case parameters.The exact score output is displayed
+                                on the event embed itself, and each embed is colour tagged (red, orange, yellow, blue)
+                                according to their scores.
                             </div>
                         </div>
                     </div>
@@ -79,19 +90,32 @@
 
                 <section id="deployment" class="text-block">
                     <h3>03 DEPLOYMENT</h3>
-                    <p>WARNINSTAR is complete and ready for deployment. Click the link below to invite it into a server
-                        of your choice. All required permissions are listed in the authorization link. Once invited, the
-                        system does not require any manual tuning nor modification. All tasks are automated. Make sure
-                        that the server has the required channels:
+                    <p>While continuously improving, WARNINSTAR is functional and ready for deployment. There is a
+                        dashboard server that allows you to use the system in its native environment. You may
+                        also invite the system directly into your own server should you wish to do so. Keep in mind that
+                        WARNINGSTAR is an entirely autonomous and one-directional system, and it cannot fulfil any
+                        real-time user commands nor respond to pings. Both the dashboard server and the invite link are
+                        available at the bottom of this page.
+                    </p>
+                    <p>
+                        Below are the regional feed channels you will need to set up in your server should you wish to
+                        invite it. WARNINGSTAR will actively search for, and only post in the exact channels.
                     </p>
                     <p><strong>#warningstar-feed</strong></p>
-                    <p><strong>#warningstar-brief</strong></p>
-                    <p>Note: If you do not wish to use the briefing feature, you can simply delete the
-                        #warningstar-brief channel. It will not affect the core functionality of the system.</p>
+                    <p><strong>#warningstar-northcom</strong></p>
+                    <p><strong>#warningstar-southcom</strong></p>
+                    <p><strong>#warningstar-centcom</strong></p>
+                    <p><strong>#warningstar-eucom</strong></p>
+                    <p><strong>#warningstar-indopacom</strong></p>
+                    <p><strong>#warningstar-africom</strong></p>
                     <br>
+                    <a href=https://discord.gg/TMKw8QdS class="btn btn-primary">
+                        JOIN DASHBOARD SERVER
+                    </a>
+                    <hr style="border: 0; border-top: 1px dashed var(--ink-color); margin: 15px 0; opacity: 0.5;">
                     <a href="https://discord.com/oauth2/authorize?client_id=1420757957477535944&permissions=183296&integration_type=0&scope=bot"
                         class="btn btn-primary">
-                        AUTHORIZE CONNECTION
+                        INVITE TO YOUR SERVER
                     </a>
                 </section>
             </article>
@@ -116,7 +140,7 @@
             slides[slideIndex - 1].style.display = "block";
         }
     </script>
-    <script src="nav.js?v=1.60"></script>
+    <script src="nav.js?v=2.00"></script>
 </body>
 
 </html>

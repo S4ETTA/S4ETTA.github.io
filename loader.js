@@ -5,7 +5,7 @@ function loadTools() {
     if (!container) return;
     let html = '';
     db.tools.forEach(item => {
-        let isLarge = item.title.includes("S7") || item.title.includes("S9");
+        let isLarge = item.title.includes("S7") || item.title.includes("S9") || item.title.includes("S2");
         let cardClass = isLarge ? "system-card large-system-card" : "system-card";
         
         html += `
