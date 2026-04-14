@@ -15,8 +15,8 @@ const db = {
         },
         {
             title: "S2A WARNINGSTAR",
-            desc: "Discord-bound data aggregator with customisable sources and keyword triggers.",
-            thumb: "assets/warningstar_news.png",
+            desc: "Discord-bound news aggregator and threat assessment system. Autonomously collects, filters, and categorises global security events to provide a real-time actionable intelligence feed.",
+            thumb: "assets/warningstar_intro.png",
             link: "tool-warningstar.html"
         }
     ],
