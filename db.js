@@ -2,12 +2,6 @@
 const db = {
     tools: [
         {
-            title: "S7 PHOBOS",
-            desc: "Node-based global early warning and threat assessment platform. Continuously aggregates data across geospatial markers to provide active situational awareness.",
-            thumb: "assets/phobos_logo3.png",
-            link: "tool-phobos.html"
-        },
-        {
             title: "S9 STRIKEMASTER",
             desc: "Multipurpose geospatial analysis platform. Advanced target plotting, precise munition simulation, and geographical topography evaluation integrated into one dashboard.",
             thumb: "assets/strikemaster_zoomcover.png",
