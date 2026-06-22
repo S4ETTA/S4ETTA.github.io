@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASW TACTICAL COMMAND — KOREA THEATRE</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body class="game-body">
+
+    <div class="crt-overlay"></div>
+    <div class="scanline-flicker"></div>
+
+    <!-- HEADER -->
+    <div class="game-header">
+        <div class="header-left">
+            <span class="header-title">▌ ASW TACTICAL COMMAND ▐</span>
+            <span class="header-sub">KOREA THEATRE // COMBINED FLEET OPS</span>
+        </div>
+        <div class="header-center">
+            <span class="hdr-item">TIME: <strong id="game-time">----Z</strong></span>
+            <span class="hdr-sep">│</span>
+            <span class="hdr-item">PHASE: <strong id="game-phase">STANDBY</strong></span>
+            <span class="hdr-sep">│</span>
+            <span class="hdr-item">TRACKS: <strong id="track-count">0</strong></span>
+            <span class="hdr-sep">│</span>
+            <span class="hdr-item">NEXT SAT: <strong id="next-sat">--m</strong></span>
+            <span class="hdr-sep">│</span>
+            <span class="hdr-item" id="alert-wrap">ALERTS: <strong id="alert-count" class="no-alert">0</strong></span>
+        </div>
+        <div class="header-right">
+            <span class="hdr-coord" id="cursor-coords">--°N --°E</span>
+            <a href="index.html" class="hdr-btn">← SITE</a>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="game-main">
+
+        <!-- TACTICAL MAP -->
+        <div class="map-wrap">
+            <div id="tactical-map"></div>
+            <div class="map-top-bar">
+                <span class="map-label">KOREA THEATRE — COMBINED ASW OPERATIONS</span>
+                <span class="map-mode" id="map-mode-label"></span>
+            </div>
+            <!-- Alert Banner -->
+            <div id="alert-banner" class="alert-banner hidden"></div>
+            <!-- Patrol WP HUD -->
+            <div id="patrol-hud" class="patrol-hud hidden">
+                <span>PATROL WP: <strong id="patrol-wp-count">0</strong> POINTS SET</span>
+                <button class="hud-btn-ok" onclick="Game.commitPatrol()">✓ COMMIT</button>
+                <button class="hud-btn-cancel" onclick="Game.cancelPatrol()">✕ CANCEL</button>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="assets" onclick="UI.switchTab('assets')">ASSETS</button>
+                <button class="tab-btn" data-tab="intel" onclick="UI.switchTab('intel')">INTEL</button>
+                <button class="tab-btn" data-tab="sat" onclick="UI.switchTab('sat')">SAT</button>
+                <button class="tab-btn" data-tab="log" onclick="UI.switchTab('log')">LOG</button>
+            </div>
+
+            <!-- ASSETS TAB -->
+            <div class="tab-panel active" id="tab-assets">
+                <div class="panel">
+                    <div class="panel-hdr">▌ SONAR WATERFALL ▐ <span id="wf-label" class="panel-hdr-sub">NO SENSOR</span></div>
+                    <canvas id="waterfall" width="280" height="120"></canvas>
+                    <div class="wf-axis">
+                        <span>000°</span><span>090°</span><span>180°</span><span>270°</span><span>360°</span>
+                    </div>
+                </div>
+                <div class="panel panel-flex-scroll">
+                    <div class="panel-hdr">▌ ROK/US ASSETS ▐</div>
+                    <div id="assets-list" class="panel-body"></div>
+                </div>
+            </div>
+
+            <!-- INTEL TAB -->
+            <div class="tab-panel" id="tab-intel">
+                <div class="panel">
+                    <div class="panel-hdr">▌ DPRK ORDER OF BATTLE ▐</div>
+                    <div id="dprk-oob" class="panel-body oob-body"></div>
+                </div>
+                <div class="panel panel-flex-scroll">
+                    <div class="panel-hdr">▌ CONTACT TRACKS ▐</div>
+                    <div id="contacts-list" class="panel-body"></div>
+                </div>
+            </div>
+
+            <!-- SATELLITE TAB -->
+            <div class="tab-panel" id="tab-sat">
+                <div class="panel">
+                    <div class="panel-hdr">▌ IMAGERY INTELLIGENCE ▐</div>
+                    <div class="sat-selector-wrap">
+                        <select id="sat-base-select" class="sat-select" onchange="UI.selectSatBase(this.value)">
+                            <option value="">-- SELECT BASE --</option>
+                        </select>
+                        <span id="sat-pass-time" class="sat-pass-time"></span>
+                    </div>
+                </div>
+                <div class="panel">
+                    <canvas id="sat-canvas" width="280" height="210"></canvas>
+                </div>
+                <div class="panel panel-flex-scroll">
+                    <div class="panel-hdr">▌ VESSEL MANIFEST ▐</div>
+                    <div id="sat-manifest" class="panel-body"></div>
+                </div>
+            </div>
+
+            <!-- LOG TAB -->
+            <div class="tab-panel" id="tab-log">
+                <div class="panel-flex-full">
+                    <div class="panel-hdr">▌ INTEL LOG ▐</div>
+                    <div id="intel-log" class="panel-body log-scroll"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMAND BAR -->
+    <div class="cmd-bar">
+        <div id="cmd-content" class="cmd-content"></div>
+    </div>
+
+    <!-- BRIEFING MODAL -->
+    <div id="modal-brief" class="modal">
+        <div class="modal-box modal-wide">
+            <div class="modal-hdr">▌ OPERATION BRIEF — KOREA THEATRE ▐</div>
+            <div class="modal-body">
+                <p class="stamp">CLASSIFICATION: TOP SECRET // SI // NOFORN</p>
+                <p class="stamp">THEATRE: REPUBLIC OF KOREA — COMBINED ASW OPERATIONS</p>
+                <br>
+                <p>SIGINT and GEOINT confirm elevated submarine activity at DPRK naval installations. Multiple vessels are assessed ready to sortie. Combined Fleet and USFK ASW assets are on alert.</p>
+                <br>
+                <p><strong>DPRK BASES UNDER SURVEILLANCE:</strong></p>
+                <p>· <em>Sinpo South Shipyard</em> — Primary SSBN facility (East Coast)</p>
+                <p>· <em>Mayang-do Naval Base</em> — East Fleet submarine flotilla</p>
+                <p>· <em>Cha-ho Submarine Base</em> — East coast patrol submarines</p>
+                <p>· <em>Nampo West Fleet</em> — Yellow Sea submarine flotilla</p>
+                <br>
+                <p><strong>YOUR ROLE:</strong> Theatre ASW commander. Monitor DPRK bases via persistent satellite surveillance. Upon detecting a sortie, deploy assigned ASW assets to localise and neutralise the contact.</p>
+                <br>
+                <p class="warn-text">INTEL: Satellite passes update vessel status at each base. A departure will be flagged within minutes. Sub class and probable patrol area will be assessed.</p>
+                <br>
+                <p><strong>SELECT MISSION LEVEL:</strong></p>
+                <div class="mission-level-select">
+                    <button class="mission-btn" onclick="Game.start('ALERT')">
+                        <span class="mission-lvl">DEFCON ALERT</span>
+                        <span class="mission-sub">2× DDG  ·  1× FF  ·  1× P-3C  ·  1× HELO</span>
+                    </button>
+                    <button class="mission-btn" onclick="Game.start('ELEVATED')">
+                        <span class="mission-lvl">ELEVATED</span>
+                        <span class="mission-sub">3× DDG  ·  2× FF  ·  2× MPA  ·  2× HELO</span>
+                    </button>
+                </div>
+                <br>
+                <p class="warn-text">ROE: Weapons free authorised against confirmed hostile submarines in ROK EEZ and critical straits.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- END MODAL -->
+    <div id="modal-end" class="modal" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-hdr" id="end-title"></div>
+            <div class="modal-body" id="end-body"></div>
+            <button class="modal-btn" onclick="location.reload()">NEW OPERATION</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
