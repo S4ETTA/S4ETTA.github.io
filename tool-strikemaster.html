@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S9 STRIKEMASTER SAETTA</title>
-    <link rel="stylesheet" href="style.css?v=2.11">
+    <title>Charles Kim | S9 Strikemaster</title>
+    <link rel="stylesheet" href="style.css?v=2.12">
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-        </script>
+    </script>
 </head>
 
 <body>
@@ -17,52 +17,53 @@
 
     <main class="container dossier-layout">
         <aside class="chapter-rail">
-            <div class="rail-header">CHAPTERS</div>
+            <div class="rail-header">Navigation</div>
             <nav class="rail-nav">
-                <a href="#overview" class="rail-link">01 OVERVIEW</a>
-                <a href="#platform" class="rail-link">02 DATA PLATFORM</a>
-                <a href="#modules" class="rail-link">03 MODULES</a>
+                <a href="#overview">01 Overview</a>
+                <a href="#platform">02 Data Platform</a>
+                <a href="#modules">03 Modules</a>
             </nav>
         </aside>
 
         <div class="dossier-body">
             <header class="page-header">
-                <h1>S9 STRIKEMASTER</h1>
-                <p>GEOSPATIAL ANALYSIS PLATFORM</p>
+                <h1>S9 Strikemaster</h1>
+                <p>Geospatial Analysis Platform</p>
             </header>
 
             <div class="carousel-container">
-                <div class="carousel-slide" style="display:block;"><video src="assets/strikemaster_default.mp4" autoplay
-                        muted loop playsinline></video>
+                <div class="carousel-slide" style="display:block;">
+                    <video src="assets/strikemaster_default.mp4" autoplay muted loop playsinline></video>
                 </div>
-                <div class="carousel-slide" style="display:block;"><video src="assets/strikemaster_demo.mp4" autoplay
-                        muted loop playsinline></video>
+                <div class="carousel-slide">
+                    <video src="assets/strikemaster_demo.mp4" autoplay muted loop playsinline></video>
                 </div>
-                <div class="carousel-slide"><img src="assets/strikemaster_casio.png" alt="CASIO">
+                <div class="carousel-slide">
+                    <img src="assets/strikemaster_casio.png" alt="CASIO">
                 </div>
-                <div class="carousel-slide"><img src="assets/strikemaster_lasior.png" alt="LASIOR">
+                <div class="carousel-slide">
+                    <img src="assets/strikemaster_lasior.png" alt="LASIOR">
                 </div>
-
                 <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
                 <button class="carousel-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
             </div>
 
             <article class="content-stream">
                 <section id="overview" class="text-block">
-                    <h3>01 SYSTEM OVERVIEW</h3>
+                    <h3>01 System Overview</h3>
                     <p>STRIKEMASTER is a geospatial intelligence platform specialised in monitoring live military
                         conflicts and assessing kinetic strike effects. Utilising an advanced high resolution satellite
                         imagery fetching system, it is assisted by a number of tools to provide in-depth data analysis
-                        and visualisation. </p>
+                        and visualisation.</p>
                 </section>
 
                 <section id="platform" class="text-block">
-                    <h3>02 BASE PLATFORM</h3>
+                    <h3>02 Base Platform</h3>
                     <p>The system is built on a modular architecture, with the baseline STRIKEMASTER serving as a
                         database and data processing platform. The system also provides basic GIS features, and allows
                         for modular upgrades. The analytical core runs on Gemma-3-27b, with support for both data
                         extraction and projection. The primary visual feed utilises multiple satellite imagery sources
-                        loading simultanaeously to provide a wide range of image date and faster loading. </p>
+                        loading simultaneously to provide a wide range of image date and faster loading.</p>
                     <p>STRIKEMASTER features a smart crosshairs system that adapts to the mode being used and displays
                         all necessary information without cluttering the visual feed. N/E and MGRS coordinates, imperial
                         and metric distance markers, and altitude markers are displayed on the crosshairs, and allows
@@ -70,60 +71,76 @@
                 </section>
 
                 <section id="modules" class="text-block">
-                    <h3>03 MODULES</h3>
-                    <p>The system includes various modular components for specialized analysis.</p>
+                    <h3>03 Modules</h3>
+                    <p>The system includes various modular components for specialised analysis.</p>
                     <div class="module-grid">
                         <div class="module-card">
                             <div class="module-title">
-                                STRIKE <span class="module-status">ACTIVE</span>
+                                Strike <span class="module-status">Active</span>
                             </div>
                             <div class="module-desc">
-                                An educative tool for automatically assessing regional vulnerabilities and potential targets. Utilises a contextual learning protocol to provide the most updated and accurate information. Offers operation and target type presets to allow for a wide variety of scenarios to be simulated.
+                                An educative tool for automatically assessing regional vulnerabilities and potential
+                                targets. Utilises a contextual learning protocol to provide the most updated and accurate
+                                information. Offers operation and target type presets to allow for a wide variety of
+                                scenarios to be simulated.
                             </div>
                         </div>
 
                         <div class="module-card">
                             <div class="module-title">
-                                CASIO <span class="module-status">ACTIVE</span>
+                                CASIO <span class="module-status">Active</span>
                             </div>
                             <div class="module-desc">
-                                <strong>Combined Aperture Satellite Imagery Overlay:</strong> Satellite imagery fetcher with access to Sentinel 1 GRD C-Band, Sentinel 2 L2A True Colour, Sentinel 2 L2A B08 NIR, Sentinel 2 L2A B12 SWIR, Sentinel 2 L2A NDVI, Sentinel 2 L2A NDWI, and Sentinel 3 SLSTR THERMAL. Allows for image data controls, snapshots, and exports.
+                                <strong>Combined Aperture Satellite Imagery Overlay:</strong> Satellite imagery fetcher
+                                with access to Sentinel 1 GRD C-Band, Sentinel 2 L2A True Colour, Sentinel 2 L2A B08
+                                NIR, Sentinel 2 L2A B12 SWIR, Sentinel 2 L2A NDVI, Sentinel 2 L2A NDWI, and Sentinel 3
+                                SLSTR THERMAL. Allows for image data controls, snapshots, and exports.
                             </div>
                         </div>
 
                         <div class="module-card">
                             <div class="module-title">
-                                LASIOR <span class="module-status">ACTIVE</span>
+                                LASIOR <span class="module-status">Active</span>
                             </div>
                             <div class="module-desc">
-                                <strong>Low Altitude Satellite Imagery Object Recognition:</strong> AI-enhanced object recognition system that utilises both regional contextual data and machine learning to identify objects of interest. Currently being trained for detailed aircraft identification.
+                                <strong>Low Altitude Satellite Imagery Object Recognition:</strong> AI-enhanced object
+                                recognition system that utilises both regional contextual data and machine learning to
+                                identify objects of interest. Currently being trained for detailed aircraft
+                                identification.
                             </div>
                         </div>
 
                         <div class="module-card">
                             <div class="module-title">
-                                CANVAS <span class="module-status">ACTIVE</span>
+                                CANVAS <span class="module-status">Active</span>
                             </div>
                             <div class="module-desc">
-                                Visualisation tool for the creation and exporting of comprehensive geospatial analysis reports, complete with detailed adaptive display elements directly integrated into the HUD.
+                                Visualisation tool for the creation and exporting of comprehensive geospatial analysis
+                                reports, complete with detailed adaptive display elements directly integrated into
+                                the HUD.
                             </div>
                         </div>
 
                         <div class="module-card">
                             <div class="module-title">
-                                OKSA <span class="module-status planned">PLANNED</span>
+                                OKSA <span class="module-status planned">Planned</span>
                             </div>
                             <div class="module-desc">
-                                <strong>Optical Kinetic Strike Assessment:</strong> Data visualisation tool for assessing the effects of precision guided munitions and creating a comprehensive data sheet to be exported and shared.
+                                <strong>Optical Kinetic Strike Assessment:</strong> Data visualisation tool for assessing
+                                the effects of precision guided munitions and creating a comprehensive data sheet to be
+                                exported and shared.
                             </div>
                         </div>
 
                         <div class="module-card">
                             <div class="module-title">
-                                GESET <span class="module-status planned">PLANNED</span>
+                                GESET <span class="module-status planned">Planned</span>
                             </div>
                             <div class="module-desc">
-                                <strong>Geographical, Environmental, and Social Element Tracker:</strong> Analytical model synthesising multi-aperture satellite imagery and land cover data to evaluate sub-conscious navigational trends. By correlating terrain features with behavioural patterns, it predicts likely movement corridors and shelter preferences to aid in environmental familiarity mapping and search operations.
+                                <strong>Geographical, Environmental, and Social Element Tracker:</strong> Analytical
+                                model synthesising multi-aperture satellite imagery and land cover data to evaluate
+                                sub-conscious navigational trends. Predicts likely movement corridors and shelter
+                                preferences to aid in environmental familiarity mapping and search operations.
                             </div>
                         </div>
                     </div>
@@ -132,9 +149,8 @@
 
             <footer class="tool-footer">
                 <div class="footer-btns">
-                    <a href="tools.html" class="btn">
-                        << BACK TO DATABASE</a>
-                            <a href="#" class="btn disabled">ACCESS SOON</a>
+                    <a href="tools.html" class="btn">&larr; Back to Systems</a>
+                    <a href="#" class="btn disabled">Access Soon</a>
                 </div>
             </footer>
         </div>
@@ -145,13 +161,13 @@
         function changeSlide(n) { showSlides(slideIndex += n); }
         function showSlides(n) {
             let slides = document.getElementsByClassName("carousel-slide");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
             for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
             slides[slideIndex - 1].style.display = "block";
         }
     </script>
-    <script src="nav.js?v=2.11"></script>
+    <script src="nav.js?v=2.12"></script>
 </body>
 
 </html>

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WARNINGSTAR SAETTA</title>
-    <link rel="stylesheet" href="style.css?v=2.11">
+    <title>Charles Kim | S2A Warningstar</title>
+    <link rel="stylesheet" href="style.css?v=2.12">
 </head>
 
 <body>
@@ -14,35 +14,37 @@
 
     <main class="container dossier-layout">
         <aside class="chapter-rail">
-            <div class="rail-header">SYSTEM NAV</div>
+            <div class="rail-header">Navigation</div>
             <nav class="rail-nav">
-                <a href="#overview" class="rail-link">01 OVERVIEW</a>
-                <a href="#features" class="rail-link">02 SYSTEM FEATURES</a>
-                <a href="#deployment" class="rail-link">03 DEPLOYMENT</a>
+                <a href="#overview">01 Overview</a>
+                <a href="#features">02 System Features</a>
+                <a href="#deployment">03 Deployment</a>
             </nav>
         </aside>
 
         <div class="dossier-body">
             <header class="page-header">
-                <h1>S2A WARNINGSTAR</h1>
-                <p>DISCORD-BOUND NEWS AGGREGATOR AND THREAT ASSESSMENT SYSTEM</p>
+                <h1>S2A Warningstar</h1>
+                <p>Discord-Bound News Aggregator & Threat Assessment</p>
             </header>
 
             <div class="carousel-container">
-                <div class="carousel-slide" style="display:block;"><img src="assets/warningstar_intro.png"
-                        alt="WarningStar Intros"></div>
-                <div class="carousel-slide"><img src="assets/warningstar_news.png" alt="WarningStar News Feed">
+                <div class="carousel-slide" style="display:block;">
+                    <img src="assets/warningstar_intro.png" alt="WarningStar Intro">
                 </div>
-                <div class="carousel-slide"><img src="assets/warningstar_channels.png" alt="WarningStar Channels">
+                <div class="carousel-slide">
+                    <img src="assets/warningstar_news.png" alt="WarningStar News Feed">
                 </div>
-
+                <div class="carousel-slide">
+                    <img src="assets/warningstar_channels.png" alt="WarningStar Channels">
+                </div>
                 <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
                 <button class="carousel-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
             </div>
 
             <article class="content-stream">
                 <section id="overview" class="text-block">
-                    <h3>01 SYSTEM OVERVIEW</h3>
+                    <h3>01 System Overview</h3>
                     <p>WARNINGSTAR is a Discord-bound international security data aggregator. It serves as a centralised
                         news feed, providing real-time updates on global events and autonomously categorising them by
                         regions and threat indexes. It takes advantage of the accessibility and security features of
@@ -50,13 +52,12 @@
                 </section>
 
                 <section id="features" class="text-block">
-                    <h3>02 SYSTEM FEATURES</h3>
-                    <p>The system is comprised of two core features that operate autonomously via scheduled workflows.
-                    </p>
+                    <h3>02 System Features</h3>
+                    <p>The system is comprised of two core features that operate autonomously via scheduled workflows.</p>
                     <div class="module-grid">
                         <div class="module-card">
                             <div class="module-title">
-                                DATA AGGREGATOR <span class="module-status">ACTIVE</span>
+                                Data Aggregator <span class="module-status">Active</span>
                             </div>
                             <div class="module-desc">
                                 <strong>Aggregation & Filtering:</strong> Through Github Actions, WARNINGSTAR wakes up
@@ -72,59 +73,48 @@
 
                         <div class="module-card">
                             <div class="module-title">
-                                THREAT ASSESSMENT <span class="module-status">ACTIVE</span>
+                                Threat Assessment <span class="module-status">Active</span>
                             </div>
                             <div class="module-desc">
                                 WARNINGSTAR utilises a sophisticated threat assessment algorithm that scores and tags
                                 events based on their potential impact on global stability. Ranging from 0 to 10, the
-                                algorithm takes into account of the general impact of the event type (elections, armed
-                                conflicts, coups, etc.), semantic event type (kinetic, active, passive, speculative)
-                                relative effects chain (neighboring states, alliances, enemies), direct impact on
-                                regional stability, and historical case parameters.The exact score output is displayed
-                                on the event embed itself, and each embed is colour tagged (red, orange, yellow, blue)
-                                according to their scores.
+                                algorithm takes into account the general impact of the event type (elections, armed
+                                conflicts, coups, etc.), semantic event type (kinetic, active, passive, speculative),
+                                relative effects chain (neighbouring states, alliances, enemies), direct impact on
+                                regional stability, and historical case parameters. Each embed is colour tagged (red,
+                                orange, yellow, blue) according to their scores.
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <section id="deployment" class="text-block">
-                    <h3>03 DEPLOYMENT</h3>
-                    <p>While continuously improving, WARNINSTAR is functional and ready for deployment. There is a
+                    <h3>03 Deployment</h3>
+                    <p>While continuously improving, WARNINGSTAR is functional and ready for deployment. There is a
                         dashboard server that allows you to use the system in its native environment, currently used by
-                        members of Seoul National University. You may
-                        also invite the system directly into your own server should you wish to do so. Keep in mind that
-                        WARNINGSTAR is an entirely autonomous and one-directional system, and it cannot fulfil any
-                        real-time user commands nor respond to pings. Both the dashboard server and the invite link are
-                        available at the bottom of this page.
-                    </p>
-                    <p>
-                        Below are the regional feed channels you will need to set up in your server should you wish to
-                        invite it. WARNINGSTAR will actively search for, and only post in the exact channels.
-                    </p>
-                    <p><strong>#warningstar-feed</strong></p>
-                    <p><strong>#warningstar-northcom</strong></p>
-                    <p><strong>#warningstar-southcom</strong></p>
-                    <p><strong>#warningstar-centcom</strong></p>
-                    <p><strong>#warningstar-eucom</strong></p>
-                    <p><strong>#warningstar-indopacom</strong></p>
-                    <p><strong>#warningstar-africom</strong></p>
-                    <br>
-                    <a href=https://discord.gg/TMKw8QdS class="btn btn-primary">
-                        JOIN DASHBOARD SERVER
-                    </a>
-                    <hr style="border: 0; border-top: 1px dashed var(--ink-color); margin: 15px 0; opacity: 0.5;">
+                        members of Seoul National University. You may also invite the system directly into your own
+                        server should you wish to do so. Keep in mind that WARNINGSTAR is an entirely autonomous and
+                        one-directional system — it cannot fulfil any real-time user commands nor respond to pings.</p>
+                    <p>The following channels are required in your server for WARNINGSTAR to post correctly:</p>
+                    <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.9rem; opacity: 0.8; margin-bottom: 24px;">
+                        <li>#warningstar-feed</li>
+                        <li>#warningstar-northcom</li>
+                        <li>#warningstar-southcom</li>
+                        <li>#warningstar-centcom</li>
+                        <li>#warningstar-eucom</li>
+                        <li>#warningstar-indopacom</li>
+                        <li>#warningstar-africom</li>
+                    </ul>
+                    <a href="https://discord.gg/TMKw8QdS" class="btn btn-primary">Join Dashboard Server</a>
+                    <div style="height: 12px;"></div>
                     <a href="https://discord.com/oauth2/authorize?client_id=1420757957477535944&permissions=183296&integration_type=0&scope=bot"
-                        class="btn btn-primary">
-                        INVITE TO YOUR SERVER
-                    </a>
+                        class="btn btn-primary">Invite to Your Server</a>
                 </section>
             </article>
 
             <footer class="tool-footer">
                 <div class="footer-btns">
-                    <a href="tools.html" class="btn">
-                        << BACK TO DATABASE</a>
+                    <a href="tools.html" class="btn">&larr; Back to Systems</a>
                 </div>
             </footer>
         </div>
@@ -135,13 +125,13 @@
         function changeSlide(n) { showSlides(slideIndex += n); }
         function showSlides(n) {
             let slides = document.getElementsByClassName("carousel-slide");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
             for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
             slides[slideIndex - 1].style.display = "block";
         }
     </script>
-    <script src="nav.js?v=2.11"></script>
+    <script src="nav.js?v=2.12"></script>
 </body>
 
 </html>

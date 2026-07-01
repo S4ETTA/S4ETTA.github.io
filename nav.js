@@ -1,26 +1,31 @@
-/* --- SAETTA NAVIGATION COMPONENT V6.1 --- */
-const SAETTA_VERSION = "1.60";
+/* --- SAETTA NAVIGATION COMPONENT V7.0 --- */
+const SAETTA_VERSION = "2.12";
 
 const navHTML = `
     <div class="top-bar">
         <div class="identity-block">
             <a href="index.html?v=${SAETTA_VERSION}" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
-                <div class="identity" style="margin-left:0;">
-                    <h1 style="font-size: 2.5rem; font-weight: bold; letter-spacing: -1px; display: flex; align-items: baseline;">Charles Kim <span style="color: var(--accent-red); font-size: 1.2rem; margin-left: 10px;">SAETTA</span></h1>
+                <div class="identity">
+                    <h1>Charles Kim</h1>
+                    <div class="saetta-title">Global Threat Analyst</div>
                 </div>
             </a>
         </div>
         <div class="nav-group">
             <nav>
                 <a href="index.html?v=${SAETTA_VERSION}">Bio</a>
-                <a href="tools.html?v=${SAETTA_VERSION}">Tools</a>
+                <a href="tools.html?v=${SAETTA_VERSION}">Systems</a>
                 <a href="papers.html?v=${SAETTA_VERSION}">Papers</a>
-                <a href="reports.html?v=${SAETTA_VERSION}">Reports</a>
             </nav>
-            <div class="socials">
-                <!-- Socials removed as requested -->
-            </div>
+            <div class="socials"></div>
         </div>
+    </div>
+    <div class="contact-bar">
+        <span class="contact-bar-item"><span class="contact-bar-label">Email</span><a href="mailto:charleskimisr@gmail.com">charleskimisr@gmail.com</a></span>
+        <span class="contact-bar-sep">·</span>
+        <span class="contact-bar-item"><span class="contact-bar-label">X</span><a href="https://x.com/S4ETTA" target="_blank">@S4ETTA</a></span>
+        <span class="contact-bar-sep">·</span>
+        <span class="contact-bar-item"><span class="contact-bar-label">Location</span>Seoul, Republic of Korea</span>
     </div>
 `;
 
